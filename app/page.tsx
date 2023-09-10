@@ -1,9 +1,17 @@
+"use client";
 import { GetDataApi } from "@/src/utils";
+import { useEffect, useState } from "react";
 
-const Home = async () => {
-  const response = await GetDataApi("http://localhost:3002/api/webstore");
+const Home = () => {
+  const [hostname, setHostname] = useState("");
 
-  const hostname = response.hostname;
+  useEffect(() => {
+    async function fetchData() {
+      const response = await GetDataApi("api/webstore");
+      setHostname(response.hostname);
+    }
+    fetchData();
+  }, []);
 
   return (
     <div>
