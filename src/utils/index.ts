@@ -4,5 +4,6 @@ import {
   PatchDataApi,
   PostDataApi,
 } from "./fetching";
+import { formatCurrency } from "./formating";
 
-export { DeleteDataApi, GetDataApi, PatchDataApi, PostDataApi };
+export { DeleteDataApi, GetDataApi, PatchDataApi, PostDataApi, formatCurrency };
