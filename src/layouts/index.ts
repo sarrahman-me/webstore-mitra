@@ -1,3 +1,4 @@
 import DetailProduct from "./detailProduct";
+import KalkulatorKeramik from "./kalkulatorBarang";
 
-export { DetailProduct };
+export { DetailProduct, KalkulatorKeramik };
