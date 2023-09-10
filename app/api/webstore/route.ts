@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     // const data = await response.json();
 
     // const hostname = new URL(request.url).hostname;
-    const hostname = request.url.split("/")[2];
+    const hostname = `hostname ${request.headers.get("host")}`;
 
     return NextResponse.json({
       status: 200,
@@ -25,7 +25,6 @@ export async function GET(request: Request) {
       requestUrl: request.url,
       requestHost: request.headers.get("host"),
       requestReferer: request.headers.get("referer"),
-      requestOrigin: request.headers.get("origin"),
     });
   } catch (error: any) {
     return NextResponse.json({
@@ -36,7 +35,6 @@ export async function GET(request: Request) {
       requestUrl: request.url,
       requestHost: request.headers.get("host"),
       requestReferer: request.headers.get("referer"),
-      requestOrigin: request.headers.get("origin"),
     });
   }
 }
