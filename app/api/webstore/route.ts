@@ -18,7 +18,7 @@ export async function GET(request: Request) {
     const hostname = request.url.split("/")[2];
 
     return NextResponse.json({
-      status: 200,
+      status: 400,
       success: true,
       //   data: data.data,
       hostname,
