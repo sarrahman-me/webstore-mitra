@@ -22,6 +22,10 @@ export async function GET(request: Request) {
       success: true,
       //   data: data.data,
       hostname,
+      requestUrl: request.url,
+      requestHost: request.headers.get("host"),
+      requestReferer: request.headers.get("referer"),
+      requestOrigin: request.headers.get("origin"),
     });
   } catch (error: any) {
     return NextResponse.json({
