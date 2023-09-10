@@ -14,7 +14,7 @@ const SearchBar = () => {
       onSubmit={(e) => {
         Loading.dots("Mencari...");
         e.preventDefault();
-        router.push(`/dashboard/barang/pencarian?query=${searchTerm}`);
+        router.push(`/barang/pencarian?query=${searchTerm}`);
         Loading.remove();
       }}
     >

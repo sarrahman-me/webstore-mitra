@@ -10,7 +10,7 @@ const Home = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await GetDataApi("api/webstore");
+      const response = await GetDataApi("/api/webstore");
       const responseBarangPromo = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/products/barang?promo=true`
       );
@@ -28,7 +28,7 @@ const Home = () => {
       <SearchBar />
       <SwiperProduct
         persentaseHarga={data.profit_percentage}
-        url="/dashboard/barang/promo"
+        url="/barang/promo"
         title="Promo"
         products={barangPromo}
       />

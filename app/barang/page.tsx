@@ -10,7 +10,7 @@ const Barang = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await GetDataApi("api/webstore");
+      const response = await GetDataApi("/api/webstore");
       const responseBarangPromo = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/products/barang?promo=true`
       );
