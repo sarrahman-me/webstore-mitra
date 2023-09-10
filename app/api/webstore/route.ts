@@ -15,13 +15,17 @@ export async function GET(request: Request) {
     // const data = await response.json();
 
     // const hostname = new URL(request.url).hostname;
-    const hostname = request.headers.get("host");
+    const hostname = request.url.split("/")[2];
 
     return NextResponse.json({
       status: 200,
       success: true,
       //   data: data.data,
       hostname,
+      requestUrl: request.url,
+      requestHost: request.headers.get("host"),
+      requestReferer: request.headers.get("referer"),
+      requestOrigin: request.headers.get("origin"),
     });
   } catch (error: any) {
     return NextResponse.json({
@@ -29,6 +33,10 @@ export async function GET(request: Request) {
       success: false,
       message: "Terjadi kesalahan saat mengambil data",
       error: error.message || "Terjadi kesalahan yang tidak diketahui",
+      requestUrl: request.url,
+      requestHost: request.headers.get("host"),
+      requestReferer: request.headers.get("referer"),
+      requestOrigin: request.headers.get("origin"),
     });
   }
 }
