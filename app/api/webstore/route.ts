@@ -23,8 +23,6 @@ export async function GET(request: Request) {
       //   data: data.data,
       hostname,
       requestUrl: request.url,
-      requestHost: request.headers.get("host"),
-      requestReferer: request.headers.get("referer"),
     });
   } catch (error: any) {
     return NextResponse.json({
@@ -32,9 +30,6 @@ export async function GET(request: Request) {
       success: false,
       message: "Terjadi kesalahan saat mengambil data",
       error: error.message || "Terjadi kesalahan yang tidak diketahui",
-      requestUrl: request.url,
-      requestHost: request.headers.get("host"),
-      requestReferer: request.headers.get("referer"),
     });
   }
 }
