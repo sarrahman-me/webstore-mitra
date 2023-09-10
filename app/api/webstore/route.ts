@@ -15,7 +15,9 @@ export async function GET(request: Request) {
     // const data = await response.json();
 
     // const hostname = new URL(request.url).hostname;
-    const hostname = new URL(request.nextUrl).hostname;
+    const hostHeader = request.headers.get("Host") || "";
+
+    const hostname = hostHeader.split(":")[0];
 
     return NextResponse.json({
       status: 200,
