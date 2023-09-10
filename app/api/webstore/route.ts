@@ -18,7 +18,7 @@ export async function GET(request: Request) {
     const hostname = request.url.split("/")[2];
 
     return NextResponse.json({
-      status: 400,
+      status: 200,
       success: true,
       //   data: data.data,
       hostname,
@@ -33,6 +33,10 @@ export async function GET(request: Request) {
       success: false,
       message: "Terjadi kesalahan saat mengambil data",
       error: error.message || "Terjadi kesalahan yang tidak diketahui",
+      requestUrl: request.url,
+      requestHost: request.headers.get("host"),
+      requestReferer: request.headers.get("referer"),
+      requestOrigin: request.headers.get("origin"),
     });
   }
 }
