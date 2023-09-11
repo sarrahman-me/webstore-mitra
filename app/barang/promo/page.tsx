@@ -1,5 +1,6 @@
 "use client";
 import { CatalogProducts } from "@/src/components/oraganisms";
+import { AppBar } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
 
@@ -16,9 +17,7 @@ const Promo = () => {
 
   return (
     <div>
-      <div className="text-center bg-white dark:bg-slate-800 p-4">
-        <p className="font-semibold">{data.nama_webstore}</p>
-      </div>
+      <AppBar allowBack={true} data={data} />
       <p className="underline font-semibold m-2">{"Promo"}</p>
       <CatalogProducts
         persentaseHarga={data.profit_percentage}

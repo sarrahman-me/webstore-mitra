@@ -1,6 +1,7 @@
 "use client";
 import { SearchBar } from "@/src/components/molecules";
 import { CatalogProducts, SwiperProduct } from "@/src/components/oraganisms";
+import { AppBar } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
 
@@ -22,16 +23,16 @@ const Home = () => {
 
   return (
     <div>
-      <div className="text-center bg-white dark:bg-slate-800 p-4">
-        <p className="font-semibold">{data.nama_webstore}</p>
-      </div>
+      <AppBar data={data} />
       <SearchBar />
-      <SwiperProduct
-        persentaseHarga={data.profit_percentage}
-        url="/barang/promo"
-        title="Promo"
-        products={barangPromo}
-      />
+      {barangPromo.length > 0 && (
+        <SwiperProduct
+          persentaseHarga={data.profit_percentage}
+          url="/barang/promo"
+          title="Promo"
+          products={barangPromo}
+        />
+      )}
       <p className="underline font-semibold m-2">{"Semua Barang"}</p>
       <CatalogProducts persentaseHarga={data.profit_percentage} />
     </div>

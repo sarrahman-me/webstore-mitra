@@ -1,5 +1,6 @@
 "use client";
 import { CatalogProducts } from "@/src/components/oraganisms";
+import { AppBar } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -19,10 +20,8 @@ const Pencarian = () => {
 
   return (
     <div>
-      <div className="text-center bg-white dark:bg-slate-800 p-4">
-        <p className="font-semibold">{data.nama_webstore}</p>
-      </div>
-      <p className="underline font-semibold m-2">{"Semua Barang"}</p>
+      <AppBar allowBack={true} data={data} />
+      <p className="underline font-semibold m-2">{`Pencarian ${query}`}</p>
       <CatalogProducts
         persentaseHarga={data.profit_percentage}
         atribut={`query=${query}`}

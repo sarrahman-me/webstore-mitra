@@ -6,7 +6,7 @@ import {
   SectionLayout,
   SwiperProduct,
 } from "@/src/components/oraganisms";
-import { DetailProduct, KalkulatorKeramik } from "@/src/layouts";
+import { AppBar, DetailProduct, KalkulatorKeramik } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -49,9 +49,7 @@ const DetailProducts = () => {
 
   return (
     <div>
-      <div className="text-center bg-white dark:bg-slate-800 p-4">
-        <p className="font-semibold">{data.nama_webstore}</p>
-      </div>
+      <AppBar allowBack={true} data={data} />
       {barang.slug && (
         <div>
           <DetailProduct
