@@ -46,7 +46,7 @@ const SearchBar = () => {
 
         if (response.predicted_class) {
           router.push(
-            `/dashboard/barang/pencarian?query=${response.predicted_class}`
+            `/barang/pencarian?query=${response.predicted_class}`
           );
         } else {
           Notify.failure("Gagal melakukan pencarian berdasarkan gambar");
@@ -56,7 +56,7 @@ const SearchBar = () => {
         Notify.failure("Gagal melakukan pencarian berdasarkan gambar");
       }
     } else {
-      router.push(`/dashboard/barang/pencarian?query=${searchTerm}`);
+      router.push(`/barang/pencarian?query=${searchTerm}`);
     }
 
     Loading.remove();

@@ -1,34 +1,17 @@
-"use client";
 import { CatalogProducts } from "@/src/components/oraganisms";
 import { AppBar } from "@/src/layouts";
-import { GetDataApi } from "@/src/utils";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
-const Pencarian = () => {
-  const params = useSearchParams();
-  const query = params.get("query");
-  const [data, setdata] = useState({} as any);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await GetDataApi("/api/webstore");
-      setdata(response.data);
-    }
-    fetchData();
-  }, []);
+export default async function Pencarian(req: any) {
+  const { query } = req.searchParams;
 
   return (
     <div>
-      <AppBar allowBack={true} data={data} />
-      <p className="underline font-semibold m-2">{`Pencarian ${query}`}</p>
+      <AppBar allowBack={true} nama_webstore={"Hasil Pencarian"} />
       <CatalogProducts
-        persentaseHarga={data.profit_percentage}
+        persentaseHarga={5}
         atribut={`query=${query}`}
         path="products/search"
       />
     </div>
   );
-};
-
-export default Pencarian;
+}

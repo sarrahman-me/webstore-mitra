@@ -3,7 +3,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { ToggleDarkMode } from "@/src/components/atoms";
 import { useRouter } from "next/navigation";
 
-export default function AppBar(props: { data: any; allowBack?: boolean }) {
+export default function AppBar(props: { nama_webstore: string; allowBack?: boolean }) {
   const router = useRouter();
 
   return (
@@ -13,7 +13,7 @@ export default function AppBar(props: { data: any; allowBack?: boolean }) {
           <AiOutlineArrowLeft />
         </p>
       )}
-      <p className="font-semibold">{props.data.nama_webstore}</p>
+      <p className="font-semibold">{props.nama_webstore}</p>
       <ToggleDarkMode />
     </div>
   );

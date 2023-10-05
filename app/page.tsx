@@ -20,11 +20,11 @@ const Home = () => {
 
   return (
     <div>
-      <AppBar data={{ nama_webstore: "test" }} />
+      <AppBar nama_webstore={"test"} />
       <SearchBar />
       <SwiperProduct
         persentaseHarga={5}
-        url="/dashboard/barang/promo"
+        url="/barang/promo"
         title="Promo"
         products={barangPromo}
       />
