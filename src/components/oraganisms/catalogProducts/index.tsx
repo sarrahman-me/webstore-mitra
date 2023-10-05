@@ -1,8 +1,8 @@
 "use client";
-import { GetDataApi } from "@/src/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import CardProduct from "../../molecules/cardProduct";
+import { CardProduct } from "../../molecules";
+import { GetDataApi } from "@/src/utils";
 
 export default function CatalogProducts(props: {
   atribut?: string;
@@ -24,7 +24,7 @@ export default function CatalogProducts(props: {
       const response = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/${path}?${
           props.atribut || ""
-        }&limit=50&page=${currentPage}`
+        }&limit=30&page=${currentPage}`
       );
       setBarang(response.data);
       setMetadata(response.metadata);
@@ -56,7 +56,10 @@ export default function CatalogProducts(props: {
           ) : barang.length > 0 ? (
             barang.map((item: any, i: any) => (
               <div key={i}>
-                <CardProduct persentaseHarga={props.persentaseHarga} product={item} />
+                <CardProduct
+                  persentaseHarga={props.persentaseHarga}
+                  product={item}
+                />
               </div>
             ))
           ) : (

@@ -50,7 +50,10 @@ export default function SwiperProduct(props: {
         >
           {props.products?.map((product) => (
             <SwiperSlide key={product.slug} className="p-2">
-              <CardProduct persentaseHarga={props.persentaseHarga} product={product} />
+              <CardProduct
+                persentaseHarga={props.persentaseHarga}
+                product={product}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
