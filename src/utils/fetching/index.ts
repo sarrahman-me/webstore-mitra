@@ -5,7 +5,6 @@ export async function GetDataApi(url: string): Promise<any> {
         "Content-Type": "application/json",
       },
       cache: "no-store",
-      credentials: "include",
     });
     const data = await response.json();
     return data;
@@ -23,7 +22,6 @@ export async function PostDataApi(url: string, payload: any): Promise<any> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
-      credentials: "include",
     });
     const data = await response.json();
     return data;
@@ -41,7 +39,6 @@ export async function PatchDataApi(url: string, payload: any): Promise<any> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
-      credentials: "include",
     });
     const data = await response.json();
     return data;
@@ -58,7 +55,6 @@ export async function DeleteDataApi(url: string): Promise<any> {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
     });
     const data = await response.json();
     return data;
