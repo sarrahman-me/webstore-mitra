@@ -7,7 +7,7 @@ import { GetDataApi } from "@/src/utils";
 export default function CatalogProducts(props: {
   atribut?: string;
   path?: string;
-  persentaseHarga: number;
+  title?: string;
 }) {
   const router = useRouter();
   const params = useSearchParams();
@@ -36,70 +36,72 @@ export default function CatalogProducts(props: {
   const handleNextPage = () => {
     if (currentPage < metadata?.totalPages) {
       setCurrentPage(currentPage + 1);
-      router.push(`page=${currentPage + 1}`);
+      router.push(`/barang?page=${currentPage + 1}`);
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      router.push(`page=${currentPage - 1}`);
+      router.push(`/barang?page=${currentPage - 1}`);
     }
   };
 
   return (
     <div>
-      <div className="p-2">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {loading ? (
-            <div className="text-center">Loading...</div>
-          ) : barang.length > 0 ? (
-            barang.map((item: any, i: any) => (
-              <div key={i}>
-                <CardProduct
-                  persentaseHarga={props.persentaseHarga}
-                  product={item}
-                />
+      {barang.length > (!props.atribut ? 0 : 1) && (
+        <>
+          <p className="underline font-semibold m-2">{props.title}</p>
+          <div className="p-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+              {loading ? (
+                <div className="text-center">Loading...</div>
+              ) : barang.length > 0 ? (
+                barang.map((item: any, i: any) => (
+                  <div key={i}>
+                    <CardProduct barang={item} />
+                  </div>
+                ))
+              ) : (
+                <div className="text-center">Data tidak ditemukan.</div>
+              )}
+            </div>
+          </div>
+          {!loading && barang.length > 0 ? (
+            <div className="flex justify-between items-center p-2">
+              <div>
+                <p className="text-xs md:text-sm text-gray-500">
+                  {metadata.totalData > 0
+                    ? `${Math.min(
+                        (currentPage - 1) * metadata.limit + 1,
+                        metadata.totalData
+                      )} - ${Math.min(
+                        currentPage * metadata.limit,
+                        metadata.totalData
+                      )} dari ${metadata.totalData}`
+                    : "Tidak ada barang yang tersedia"}
+                </p>
               </div>
-            ))
-          ) : (
-            <div className="text-center">Data tidak ditemukan.</div>
-          )}
-        </div>
-      </div>
-      {!loading && barang.length > 0 ? (
-        <div className="flex justify-between items-center p-2">
-          <div>
-            <p className="text-xs md:text-sm text-gray-500">
-              {metadata.totalData > 0
-                ? `${Math.min(
-                    (currentPage - 1) * metadata.limit + 1,
-                    metadata.totalData
-                  )} - ${Math.min(
-                    currentPage * metadata.limit,
-                    metadata.totalData
-                  )} dari ${metadata.totalData}`
-                : "Tidak ada barang yang tersedia"}
-            </p>
-          </div>
-          <div className="flex justify-around items-center">
-            <button
-              onClick={handlePrevPage}
-              disabled={currentPage === 1}
-              className="text-4xl text-indigo-500 disabled:text-gray-400 disabled:cursor-not-allowed mr-5"
-            >
-              {"<"}
-            </button>
-            <button
-              onClick={handleNextPage}
-              disabled={currentPage === metadata?.totalPages}
-              className="text-4xl text-indigo-500 disabled:text-gray-400 disabled:cursor-not-allowed"
-            >
-              {">"}
-            </button>
-          </div>
-        </div>
-      ) : null}
+              <div className="flex justify-around items-center">
+                <button
+                  onClick={handlePrevPage}
+                  disabled={currentPage === 1}
+                  className="text-4xl text-indigo-500 disabled:text-gray-400 disabled:cursor-not-allowed mr-5"
+                >
+                  {"<"}
+                </button>
+                <button
+                  onClick={handleNextPage}
+                  disabled={currentPage === metadata?.totalPages}
+                  className="text-4xl text-indigo-500 disabled:text-gray-400 disabled:cursor-not-allowed"
+                >
+                  {">"}
+                </button>
+              </div>
+            </div>
+          ) : null}
+        </>
+      )}
     </div>
   );
 }

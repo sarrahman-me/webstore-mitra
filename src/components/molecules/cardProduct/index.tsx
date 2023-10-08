@@ -2,29 +2,34 @@
 "use client";
 import { formatCurrency } from "@/src/utils";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 
-const CardProduct = (props: { product: any; persentaseHarga: number }) => {
-  const harga =
-    Number(props.product?.harga) +
-    Number((props.product?.harga * props.persentaseHarga) / 100);
-  const hargaPromo =
-    Number(props.product?.harga_promo) +
-    Number((props.product?.harga_promo * props.persentaseHarga) / 100);
+const CardProduct = (props: { barang: any }) => {
   const router = useRouter();
+  const { percentaseMembership, webstore } = useSelector(
+    (state: any) => state.webstore
+  );
 
-  // Fungsi untuk memeriksa apakah barang baru
-  const isNewProduct = () => {
-    const createdAt = new Date(props.product?.createdAt);
-    const now = new Date();
-    const oneWeekAgo = new Date();
-    oneWeekAgo.setDate(now.getDate() - 7); // Kurangi 7 hari dari tanggal saat ini
+  const percentaseWebstore = webstore.profit_percentage;
 
-    return createdAt >= oneWeekAgo;
-  };
+  const hargaModal =
+    Number(props.barang?.harga) +
+    Number((props.barang?.harga * percentaseMembership) / 100);
+
+  const harga =
+    Number(hargaModal) + Number((hargaModal * percentaseWebstore) / 100);
+
+  const hargaPromoModal =
+    Number(props.barang?.harga_promo) +
+    Number((props.barang?.harga_promo * percentaseMembership) / 100);
+
+  const hargaPromo =
+    Number(hargaPromoModal) +
+    Number((hargaPromoModal * percentaseWebstore) / 100);
 
   // Fungsi untuk menghitung berapa persen potongannya
   const calculateDiscountPercentage = () => {
-    if (props.product?.promo) {
+    if (props.barang?.promo) {
       const potongan = harga - hargaPromo;
       const persentasePotongan = (potongan / harga) * 100;
       return persentasePotongan.toFixed(0);
@@ -32,10 +37,20 @@ const CardProduct = (props: { product: any; persentaseHarga: number }) => {
     return "";
   };
 
+  // Fungsi untuk memeriksa apakah barang baru
+  const isNewProduct = () => {
+    const createdAt = new Date(props.barang?.createdAt);
+    const now = new Date();
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(now.getDate() - 7); // Kurangi 7 hari dari tanggal saat ini
+
+    return createdAt >= oneWeekAgo;
+  };
+
   return (
     <div
       onClick={() => {
-        router.push(`/barang/${props.product.slug}`);
+        router.push(`/barang/${props.barang.slug}`);
       }}
       className={`bg-white dark:bg-slate-800 rounded shadow cursor-pointer relative hover:shadow-md`}
     >
@@ -47,22 +62,22 @@ const CardProduct = (props: { product: any; persentaseHarga: number }) => {
 
       <div className="flex justify-center">
         <img
-          className="object-contain max-h-52 border"
-          src={props.product?.images[0]}
-          alt={props.product?.nama_barang}
+          className="object-contain max-h-48 border"
+          src={props.barang?.images[0]}
+          alt={props.barang?.nama_barang}
         />
       </div>
       <div className="p-1 divide-y-4 divide-transparent">
-        <p className="text-xs text-indigo-500">{props.product?.kategori}</p>
+        <p className="text-xs text-indigo-500">{props.barang?.kategori}</p>
         <p className="text-xs">
-          {(props.product?.nama_barang as string).toUpperCase()}
+          {(props.barang?.nama_barang as string).toUpperCase()}
         </p>
-        {props.product.promo ? (
+        {props.barang.promo ? (
           <p className="text-sm font-semibold">{formatCurrency(hargaPromo)}</p>
         ) : (
           <p className="text-sm font-semibold">{formatCurrency(harga)}</p>
         )}
-        {props.product.promo && (
+        {props.barang.promo && (
           <span className="flex items-center text-xs">
             <p className="bg-red-200 text-red-500 rounded p-0.5 mr-1">{`${calculateDiscountPercentage()}%`}</p>
             <p className="text-gray-400 line-through">
@@ -72,10 +87,9 @@ const CardProduct = (props: { product: any; persentaseHarga: number }) => {
         )}
         <div className="text-xs flex justify-between items-center">
           <div className="flex items-center divide-x-8 divide-transparent">
-            <p>{props.product?.tekstur}</p>
-            {/* <p>{props.product?.stok} Dus</p> */}
+            <p>{props.barang?.tekstur}</p>
           </div>
-          <p>{props.product?.ukuran}</p>
+          <p>{props.barang?.ukuran}</p>
         </div>
       </div>
     </div>

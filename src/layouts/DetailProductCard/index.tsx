@@ -1,16 +1,29 @@
+"use client";
 import { formatCurrency } from "@/src/utils";
+import { useSelector } from "react-redux";
 
 /* eslint-disable @next/next/no-img-element */
-export default function DetailProduct(props: {
-  barang: any;
-  profit_percentage: number;
-}) {
-  const harga =
+export default function DetailProductCard(props: { barang: any }) {
+  const { percentaseMembership, webstore } = useSelector(
+    (state: any) => state.webstore
+  );
+
+  const percentaseWebstore = webstore.profit_percentage;
+
+  const hargaModal =
     Number(props.barang?.harga) +
-    Number((props.barang?.harga * props.profit_percentage) / 100);
-  const hargaPromo =
+    Number((props.barang?.harga * percentaseMembership) / 100);
+
+  const harga =
+    Number(hargaModal) + Number((hargaModal * percentaseWebstore) / 100);
+
+  const hargaPromoModal =
     Number(props.barang?.harga_promo) +
-    Number((props.barang?.harga_promo * props.profit_percentage) / 100);
+    Number((props.barang?.harga_promo * percentaseMembership) / 100);
+
+  const hargaPromo =
+    Number(hargaPromoModal) +
+    Number((hargaPromoModal * percentaseWebstore) / 100);
 
   // Fungsi untuk menghitung berapa persen potongannya
   const calculateDiscountPercentage = () => {

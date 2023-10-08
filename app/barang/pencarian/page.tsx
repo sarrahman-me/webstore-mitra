@@ -6,12 +6,8 @@ export default async function Pencarian(req: any) {
 
   return (
     <div>
-      <AppBar allowBack={true} nama_webstore={"Hasil Pencarian"} />
-      <CatalogProducts
-        persentaseHarga={5}
-        atribut={`query=${query}`}
-        path="products/search"
-      />
+      <AppBar allowBack={true} />
+      <CatalogProducts title="Hasil Pencarian" atribut={`query=${query}`} path="products/search" />
     </div>
   );
 }

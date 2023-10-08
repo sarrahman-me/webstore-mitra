@@ -5,7 +5,7 @@ import { AppBar } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
 
-const Home = () => {
+const BarangPage = () => {
   const [barangPromo, setbarangPromo] = useState([] as any);
 
   useEffect(() => {
@@ -20,18 +20,12 @@ const Home = () => {
 
   return (
     <div>
-      <AppBar nama_webstore={"test"} />
+      <AppBar />
       <SearchBar />
-      <SwiperProduct
-        persentaseHarga={5}
-        url="/barang/promo"
-        title="Promo"
-        products={barangPromo}
-      />
-      <p className="underline font-semibold m-2">{"Semua Barang"}</p>
-      <CatalogProducts persentaseHarga={5} />
+      <SwiperProduct url="/barang/promo" title="Promo" products={barangPromo} />
+      <CatalogProducts title="Semua Barang" />
     </div>
   );
 };
 
-export default Home;
+export default BarangPage;

@@ -1,19 +1,48 @@
 "use client";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setWebstore,
+  setPercentaseMembership,
+} from "@/src/redux/slice/webstore";
+import { GetDataApi } from "@/src/utils";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { ToggleDarkMode } from "@/src/components/atoms";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export default function AppBar(props: { nama_webstore: string; allowBack?: boolean }) {
+export default function AppBar(props: { allowBack?: boolean }) {
   const router = useRouter();
+  const { webstore } = useSelector((state: any) => state.webstore);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await GetDataApi(
+        `${process.env.NEXT_PUBLIC_HOST}/webstore/${process.env.NEXT_PUBLIC_ID_WEBSTORE}`
+      );
+      const responseMembership = await GetDataApi(
+        `${process.env.NEXT_PUBLIC_HOST}/membership/member/${response?.data?.id_membership}`
+      );
+      dispatch(setWebstore(response.data));
+      dispatch(
+        setPercentaseMembership(responseMembership.data.harga.persentase)
+      );
+    }
+
+    fetchData();
+  }, [dispatch]);
 
   return (
     <div className="bg-white dark:bg-slate-800 flex justify-between items-center p-2">
       {props.allowBack && (
-        <p onClick={() => router.back()} className="font-semibold cursor-pointer text-lg">
+        <p
+          onClick={() => router.back()}
+          className="font-semibold cursor-pointer text-lg"
+        >
           <AiOutlineArrowLeft />
         </p>
       )}
-      <p className="font-semibold">{props.nama_webstore}</p>
+      <p className="font-semibold">{webstore.nama_webstore}</p>
       <ToggleDarkMode />
     </div>
   );
