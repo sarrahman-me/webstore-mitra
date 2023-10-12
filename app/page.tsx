@@ -1,7 +1,7 @@
 "use client";
 import { SearchBar } from "@/src/components/molecules";
 import { CatalogProducts, SwiperProduct } from "@/src/components/oraganisms";
-import { AppBar } from "@/src/layouts";
+import { AppBar, MotifList } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
 
@@ -22,8 +22,10 @@ const Home = () => {
     <div>
       <AppBar />
       <SearchBar />
+      <MotifList />
+      <p className="underline font-semibold m-2">Semua Barang</p>
+      <CatalogProducts />
       <SwiperProduct url="/barang/promo" title="Promo" products={barangPromo} />
-      <CatalogProducts title="Semua Barang" />
     </div>
   );
 };

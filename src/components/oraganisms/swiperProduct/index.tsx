@@ -21,35 +21,37 @@ export default function SwiperProduct(props: {
         {props.url && (
           <BsFillArrowRightCircleFill
             onClick={() => router.push(props.url)}
-            className="text-indigo-500 hover:bg-indigo-500 hover:text-white rounded-full text-xl md:text-2xl cursor-pointer"
+            className="text-indigo-500 hover:bg-indigo-500 hover:text-white rounded-full text-2xl cursor-pointer"
           />
         )}
       </div>
       <div className="cursor-grab select-none">
         <Swiper
-          slidesPerView={2}
-          spaceBetween={3}
+          slidesPerView={3}
+          spaceBetween={2}
           modules={[Pagination]}
           grabCursor={true}
           pagination={{ clickable: true }}
           breakpoints={{
             640: {
-              slidesPerView: 3,
-              spaceBetween: 3,
+              slidesPerView: 4,
+              spaceBetween: 2,
             },
             768: {
-              slidesPerView: 4,
-              spaceBetween: 3,
+              slidesPerView: 5,
+              spaceBetween: 2,
             },
             1024: {
-              slidesPerView: 6,
-              spaceBetween: 3,
+              slidesPerView: 7,
+              spaceBetween: 2,
             },
           }}
         >
           {props.products?.map((product) => (
-            <SwiperSlide key={product.slug} className="p-2">
-              <CardProduct barang={product} />
+            <SwiperSlide key={product.slug} className="p-1">
+              <CardProduct
+                barang={product}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { IconSelect } from "@/src/components/molecules";
+import { IconSelect, SearchBar } from "@/src/components/molecules";
 import {
   CatalogProducts,
   SectionLayout,
@@ -11,7 +11,7 @@ import {
   KalkulatorKeramik,
   SimulasiKeramik,
 } from "@/src/layouts";
-import { GetDataApi } from "@/src/utils";
+import { GetDataApi, formatCurrency } from "@/src/utils";
 
 const DetailBarang = async ({ params }: { params: { slug: string } }) => {
   const slug = params.slug;
@@ -22,15 +22,21 @@ const DetailBarang = async ({ params }: { params: { slug: string } }) => {
 
   const barang = responseBarang.data;
 
+  const responseBarangSerupa = await GetDataApi(
+    `${process.env.NEXT_PUBLIC_HOST}/products/barang?kategori=${barang.kategori}&ukuran=${barang.ukuran}&motif=${barang.motif}&tekstur=${barang.tekstur}`
+  );
+
   const responseBarangSejenis = await GetDataApi(
     `${process.env.NEXT_PUBLIC_HOST}/products/barang?nama=${barang.nama_barang}&brand=${barang.brand}`
   );
 
   const barangSejenis = responseBarangSejenis.data;
+  const barangSerupa = responseBarangSerupa.data;
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div>
       <AppBar allowBack={true} />
+      <SearchBar />
       <DetailProductCard barang={barang} />
       <p className="underline font-semibold m-2">Detail Produk</p>
       <SectionLayout>
@@ -84,12 +90,14 @@ const DetailBarang = async ({ params }: { params: { slug: string } }) => {
           />
         </div>
       ) : null}
-      <div>
-        <CatalogProducts
-          title="Rekomendasi"
-          atribut={`kategori=${barang.kategori}&ukuran=${barang.ukuran}&motif=${barang.motif}&tekstur=${barang.tekstur}`}
-        />
-      </div>
+      {barangSerupa.length > 1 ? (
+        <div>
+          <p className="underline font-semibold m-2">{`Rekomendasi`}</p>
+          <CatalogProducts
+            atribut={`kategori=${barang.kategori}&ukuran=${barang.ukuran}&motif=${barang.motif}&tekstur=${barang.tekstur}`}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };
