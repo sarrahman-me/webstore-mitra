@@ -31,7 +31,7 @@ const SearchBar = () => {
 
     if (!searchTerm && !image) {
       Loading.remove();
-      Notify.warning("Masukkan kata kunci pencarian atau unggah gambar");
+      Notify.warning("Masukkan kata kunci pencarian");
       return;
     }
 
@@ -90,7 +90,7 @@ const SearchBar = () => {
           >
             <RiSearchLine size={20} />
           </button>
-          <button
+          {/* <button
             type="button"
             className="bg-transparent p-1 cursor-pointer focus:outline-none text-indigo-500"
             onClick={handleImageIconClick}
@@ -104,7 +104,7 @@ const SearchBar = () => {
               hidden
               ref={fileInputRef}
             />
-          </button>
+          </button> */}
           {image && (
             <div className="bg-slate-50 rounded-md shadow absolute flex border p-1 pr-8">
               <img
