@@ -42,7 +42,7 @@ export default function SwiperProduct(props: {
               spaceBetween: 2,
             },
             1024: {
-              slidesPerView: 7,
+              slidesPerView: 8,
               spaceBetween: 2,
             },
           }}

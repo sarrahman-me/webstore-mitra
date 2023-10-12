@@ -1,8 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { formatCurrency } from "@/src/utils";
 import { useSelector } from "react-redux";
 
-/* eslint-disable @next/next/no-img-element */
 export default function DetailProductCard(props: { barang: any }) {
   const { percentaseMembership, webstore } = useSelector(
     (state: any) => state.webstore
@@ -36,12 +36,13 @@ export default function DetailProductCard(props: { barang: any }) {
   };
 
   return (
-    <div className="flex flex-col md:flex-row my-2">
-        <div className="w-1/3 flex justify-center items-center m-2 md:m-0">
+    <div className="my-2">
+        <div className="flex justify-center items-center m-2">
           <img
             src={props.barang.images[0]}
             alt={props.barang.slug}
-            className="object-contain max-h-44 border"
+            width={250}
+            height={250}
           />
         </div>
         <div className="bg-white dark:bg-slate-800 rounded-md borde p-2 w-full shadow">
