@@ -8,6 +8,7 @@ const Promo = () => {
     <div>
       <AppBar allowBack={true} />
       <SearchBar />
+      <p className="underline font-semibold m-2">Barang promo</p>
       <CatalogProducts atribut={`promo=true`} />
     </div>
   );

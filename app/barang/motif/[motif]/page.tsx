@@ -9,6 +9,7 @@ export default async function Motif({ params }: { params: { motif: string } }) {
     <div>
       <AppBar allowBack={true} />
       <SearchBar />
+      <p className="underline font-semibold m-2">Motif {motif}</p>
       <CatalogProducts atribut={`motif=${motif}`} />
     </div>
   );

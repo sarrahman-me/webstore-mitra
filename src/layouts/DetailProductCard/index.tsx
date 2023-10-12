@@ -37,7 +37,7 @@ export default function DetailProductCard(props: { barang: any }) {
 
   return (
     <div className="flex flex-col md:flex-row my-2">
-        <div className="md:w-1/3 flex justify-center items-center w-full m-2 md:m-0">
+        <div className="w-1/3 flex justify-center items-center m-2 md:m-0">
           <img
             src={props.barang.images[0]}
             alt={props.barang.slug}
