@@ -1,10 +1,10 @@
 export async function GetDataApi(url: string): Promise<any> {
   try {
     const response = await fetch(url, {
+      next: { revalidate: 3600 },
       headers: {
         "Content-Type": "application/json",
       },
-      cache: "no-store",
     });
     const data = await response.json();
     return data;
