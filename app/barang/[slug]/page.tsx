@@ -17,7 +17,7 @@ const DetailBarang = async ({ params }: { params: { slug: string } }) => {
   const slug = params.slug;
 
   const responseBarang = await GetDataApi(
-    `${process.env.NEXT_PUBLIC_HOST}/products/barang/${slug}`
+    `${process.env.NEXT_PUBLIC_HOST}/products/barang/${slug}?track=true`
   );
 
   const barang = responseBarang.data;

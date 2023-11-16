@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   setWebstore,
   setPercentaseMembership,
+  setDomain,
 } from "@/src/redux/slice/webstore";
 import { GetDataApi } from "@/src/utils";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -23,6 +24,7 @@ export default function AppBar(props: { allowBack?: boolean }) {
       const responseMembership = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/membership/member/${response?.data?.id_membership}`
       );
+      dispatch(setDomain(response?.data?.domain));
       dispatch(setWebstore(response.data));
       dispatch(
         setPercentaseMembership(responseMembership.data.harga.persentase)
