@@ -18,11 +18,11 @@ const motifList = [
     image: MarbleMotif,
   },
   {
-    title: "Wood",
+    title: "Wood (Kayu)",
     image: WoodMotif,
   },
   {
-    title: "Stone",
+    title: "Stone (Batu)",
     image: StoneMotif,
   },
   {
@@ -30,7 +30,7 @@ const motifList = [
     image: FancyMotif,
   },
   {
-    title: "Natural",
+    title: "Basic (Polos)",
     image: BasicMotif,
   },
   {
