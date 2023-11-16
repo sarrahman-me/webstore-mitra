@@ -22,10 +22,10 @@ const Home = () => {
     <div>
       <AppBar />
       <SearchBar />
-      <SwiperProduct url="/barang/promo" title="Promo" products={barangPromo} />
       <MotifList />
       <p className="underline font-semibold m-2">Semua Barang</p>
       <CatalogProducts />
+      <SwiperProduct url="/barang/promo" title="Promo" products={barangPromo} />
     </div>
   );
 };

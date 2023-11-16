@@ -60,7 +60,9 @@ const KalkulatorKeramik = (props: { barang: any }) => {
           name={"lebar"}
           onChange={(event) => setLebar(event.target.value)}
         />
-        <Button isSubmit={true}>Hitung</Button>
+        <div className="my-2">
+          <Button type={"submit"}>Hitung</Button>
+        </div>
       </form>
 
       {/* hasil perhitungan */}

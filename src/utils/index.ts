@@ -5,5 +5,6 @@ import {
   PostDataApi,
 } from "./fetching";
 import { formatCurrency } from "./formating";
+import upPriceWithPercen from "./upPriceWithPercen";
 
-export { DeleteDataApi, GetDataApi, PatchDataApi, PostDataApi, formatCurrency };
+export { DeleteDataApi, GetDataApi, PatchDataApi, PostDataApi, formatCurrency, upPriceWithPercen };
