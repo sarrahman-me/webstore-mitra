@@ -109,16 +109,17 @@ const DetailBarang = () => {
         <SectionLayout>
           <KalkulatorKeramik barang={barang} />
         </SectionLayout>
-      </div>
 
-      <Button
-        onClick={handlePesan}
-        size="full"
-        color="green"
-        icon={<FaWhatsapp />}
-      >
-        Pesan
-      </Button>
+        {/* whatsapp */}
+        <Button
+          onClick={handlePesan}
+          size="full"
+          color="green"
+          icon={<FaWhatsapp />}
+        >
+          Pesan
+        </Button>
+      </div>
 
       {/* barang sejenis */}
 
