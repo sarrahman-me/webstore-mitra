@@ -70,22 +70,26 @@ const CardProduct = (props: { barang: any }) => {
       <div className="p-1 divide-y-2 md:divide-y-4 divide-transparent">
         <p className="text-xs text-indigo-500">{props.barang?.kategori}</p>
         <p className="text-xs md:text-sm">{props.barang?.nama_barang}</p>
-        {props.barang.promo ? (
-          <p className="text-xs md:text-sm font-semibold">
-            {formatCurrency(hargaPromo)}
-          </p>
-        ) : (
-          <p className="text-xs md:text-sm font-semibold">
-            {formatCurrency(harga)}
-          </p>
-        )}
-        {props.barang.promo && (
-          <span className="flex items-center text-xs">
-            <p className="text-xs md:bg-red-200 text-red-500 rounded p-0.5 mr-1">{`${calculateDiscountPercentage()}%`}</p>
-            <p className="text-xs text-gray-400 line-through">
-              {formatCurrency(harga)}
-            </p>
-          </span>
+        {webstore.show_price && (
+          <div>
+            {props.barang.promo ? (
+              <p className="text-xs md:text-sm font-semibold">
+                {formatCurrency(hargaPromo)}
+              </p>
+            ) : (
+              <p className="text-xs md:text-sm font-semibold">
+                {formatCurrency(harga)}
+              </p>
+            )}
+            {props.barang.promo && (
+              <span className="flex items-center text-xs">
+                <p className="text-xs md:bg-red-200 text-red-500 rounded p-0.5 mr-1">{`${calculateDiscountPercentage()}%`}</p>
+                <p className="text-xs text-gray-400 line-through">
+                  {formatCurrency(harga)}
+                </p>
+              </span>
+            )}
+          </div>
         )}
         <div className="text-xs flex justify-between items-center">
           <div className="flex items-center divide-x-8 divide-transparent">
