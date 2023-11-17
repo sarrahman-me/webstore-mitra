@@ -127,7 +127,7 @@ const DetailBarang = () => {
         <div>
           <SwiperProduct
             products={barangSejenis}
-            title={"Motif Lainnya"}
+            title={"Warna Lainnya"}
             url={""}
           />
         </div>

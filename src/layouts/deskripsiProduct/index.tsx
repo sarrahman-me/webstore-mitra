@@ -16,7 +16,7 @@ const DeskripsiProduk = ({ barang }: DeskripsiProdukProps) => {
   return (
     <Container>
       <div className="flex flex-col md:flex-row m-2">
-        <div className="text-sm md:text-base space-y-2 md:space-y-3 w-1/2">
+        <div className="p-2 text-sm md:text-base space-y-2 md:space-y-3 w-1/2">
           <Typography>Ukuran: {barang.ukuran}</Typography>
           <Typography>Kualitas: {barang.kualitas}</Typography>
           <Typography>Motif: {barang.motif}</Typography>
