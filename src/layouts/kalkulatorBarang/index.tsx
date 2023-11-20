@@ -72,39 +72,45 @@ const KalkulatorKeramik = (props: { barang: any }) => {
           <p className="text-base flex items-center">
             Kebutuhan: {hasil?.kebutuhan} dus
           </p>
-          {props.barang.promo && (
-            <p className="text-base divide-y-4 divide-transparent">
-              Estimasi Biaya:
-              {formatCurrency(hargaPromo * hasil?.kebutuhan)}*
-              <p className="text-xs">
-                (*berdasarkan hasil kebutuhan dan harga barang)
-              </p>
-              <p className="text-xs text-green-600">
-                Kamu hemat{" "}
-                {formatCurrency(
-                  harga * hasil?.kebutuhan - hargaPromo * hasil?.kebutuhan
+
+          {webstore.show_price && (
+            <div>
+              {props.barang.promo && (
+                <p className="text-base divide-y-4 divide-transparent">
+                  Estimasi Biaya:
+                  {formatCurrency(hargaPromo * hasil?.kebutuhan)}*
+                  <p className="text-xs">
+                    (*berdasarkan hasil kebutuhan dan harga barang)
+                  </p>
+                  <p className="text-xs text-green-600">
+                    Kamu hemat{" "}
+                    {formatCurrency(
+                      harga * hasil?.kebutuhan - hargaPromo * hasil?.kebutuhan
+                    )}
+                  </p>
+                </p>
+              )}
+              <div className="text-sm md:text-base">
+                {props.barang.promo ? (
+                  <span className="flex items-center text-xs">
+                    <p className="bg-red-200 text-red-500 rounded p-0.5 mr-1">{`${calculateDiscountPercentage()}%`}</p>
+                    <p className="text-gray-500 line-through">
+                      {formatCurrency(Number(harga) * hasil?.kebutuhan)}
+                    </p>
+                  </span>
+                ) : (
+                  <span className="text-base divide-y-4 divide-transparent">
+                    Estimasi Biaya:
+                    {formatCurrency(Number(harga) * hasil?.kebutuhan)}
+                    <p className="text-xs">
+                      (*berdasarkan hasil kebutuhan dan harga barang)
+                    </p>
+                  </span>
                 )}
-              </p>
-            </p>
+              </div>
+            </div>
           )}
-          <div className="text-sm md:text-base">
-            {props.barang.promo ? (
-              <span className="flex items-center text-xs">
-                <p className="bg-red-200 text-red-500 rounded p-0.5 mr-1">{`${calculateDiscountPercentage()}%`}</p>
-                <p className="text-gray-500 line-through">
-                  {formatCurrency(Number(harga) * hasil?.kebutuhan)}
-                </p>
-              </span>
-            ) : (
-              <span className="text-base divide-y-4 divide-transparent">
-                Estimasi Biaya:
-                {formatCurrency(Number(harga) * hasil?.kebutuhan)}
-                <p className="text-xs">
-                  (*berdasarkan hasil kebutuhan dan harga barang)
-                </p>
-              </span>
-            )}
-          </div>
+
           <p className="text-sm md:text-base">
             Diameter Ruangan: {hasil?.diameter_ruang} m<sup>2</sup>
           </p>

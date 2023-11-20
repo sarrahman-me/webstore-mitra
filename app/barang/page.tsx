@@ -4,9 +4,11 @@ import { CatalogProducts, SwiperProduct } from "@/src/components/oraganisms";
 import { AppBar, MotifList } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const [barangPromo, setbarangPromo] = useState([] as any);
+  const { webstore } = useSelector((state: any) => state.webstore);
 
   useEffect(() => {
     async function fetchData() {
@@ -22,10 +24,16 @@ const Home = () => {
     <div>
       <AppBar />
       <SearchBar />
+      {webstore.show_price && (
+        <SwiperProduct
+          url="/barang/promo"
+          title="Promo"
+          products={barangPromo}
+        />
+      )}
       <MotifList />
       <p className="underline font-semibold m-2">Semua Barang</p>
       <CatalogProducts />
-      <SwiperProduct url="/barang/promo" title="Promo" products={barangPromo} />
     </div>
   );
 };

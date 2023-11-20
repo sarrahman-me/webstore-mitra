@@ -91,10 +91,14 @@ const CardProduct = (props: { barang: any }) => {
             )}
           </div>
         )}
+        {webstore.show_stock && (
+          <p className="text-xs md:text-sm">
+            Stok: {props.barang.stok}
+          </p>
+        )}
         <div className="text-xs flex justify-between items-center">
           <div className="flex items-center divide-x-8 divide-transparent">
             <p>{props.barang?.tekstur}</p>
-            {/* <p>{props.barang?.stok} Dus</p> */}
           </div>
           <p>{props.barang?.ukuran}</p>
         </div>

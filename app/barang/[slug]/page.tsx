@@ -117,7 +117,7 @@ const DetailBarang = () => {
           color="green"
           icon={<FaWhatsapp />}
         >
-          Pesan
+          Whatsapp
         </Button>
       </div>
 

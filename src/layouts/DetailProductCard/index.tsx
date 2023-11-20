@@ -55,7 +55,9 @@ export default function DetailProductCard(props: { barang: any }) {
             {props.barang.warna}
           </p>
           <p className="text-sm md:text-base">{props.barang.brand}</p>
-          <p className="text-sm md:text-base">Stok {props.barang.stok} Dus</p>
+          {webstore.show_stock && (
+            <p className="text-sm md:text-base">Stok {props.barang.stok} Dus</p>
+          )}
           {webstore.show_price && (
             <div>
               {props.barang.promo && (
