@@ -1,7 +1,7 @@
 "use client";
 import { SearchBar } from "@/src/components/molecules";
 import { CatalogProducts, SwiperProduct } from "@/src/components/oraganisms";
-import { AppBar, MotifList } from "@/src/layouts";
+import { AppBar, MotifList, PilihanPencarian } from "@/src/layouts";
 import { GetDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -32,6 +32,7 @@ const Home = () => {
         />
       )}
       <MotifList />
+      <PilihanPencarian />
       <p className="underline font-semibold m-2">Semua Barang</p>
       <CatalogProducts />
     </div>
