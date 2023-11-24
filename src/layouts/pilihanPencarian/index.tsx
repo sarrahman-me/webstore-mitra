@@ -74,7 +74,10 @@ const PilihanPencarian = () => {
 
       {pilihan.kategori && pilihan.ukuran && (
         <div>
-          <p className="underline font-semibold m-2">Rekomendasi Pilihan</p>
+          <p className="underline font-semibold m-2">
+            Rekomendasi Pilihan Kategori {pilihan.kategori} dengan ukuran{" "}
+            {pilihan.ukuran}
+          </p>
           <CatalogProducts
             limit="100"
             unPagination={true}
