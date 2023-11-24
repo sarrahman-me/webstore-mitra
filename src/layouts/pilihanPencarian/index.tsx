@@ -30,7 +30,7 @@ const PilihanPencarian = () => {
     <div className="w-full rounded p-1">
       {!pilihan.kategori && (
         <div className="bg-white dark:bg-gray-800 p-2 rounded">
-          <Typography variant="subtitle" otherClass="my-2" align="center">
+          <Typography otherClass="my-2" align="center">
             Pilihan Kategori
           </Typography>
           <div className="grid grid-cols-2 gap-3">
@@ -52,7 +52,7 @@ const PilihanPencarian = () => {
 
       {pilihan.kategori && !pilihan.ukuran && (
         <div className="bg-white dark:bg-gray-800 p-2 rounded">
-          <Typography variant="subtitle" otherClass="my-2" align="center">
+          <Typography otherClass="my-2" align="center">
             Pilihan Ukuran
           </Typography>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
@@ -75,8 +75,7 @@ const PilihanPencarian = () => {
       {pilihan.kategori && pilihan.ukuran && (
         <div>
           <p className="underline font-semibold m-2">
-            Rekomendasi Pilihan Kategori {pilihan.kategori} dengan ukuran{" "}
-            {pilihan.ukuran}
+            Pilihan {pilihan.kategori} {pilihan.ukuran}
           </p>
           <CatalogProducts
             limit="100"
@@ -107,7 +106,7 @@ const Pill = (props: { nama: string; onClick: any }) => {
   return (
     <div
       onClick={props.onClick}
-      className="text-white cursor-pointer hover:bg-indigo-400 text-center p-2 rounded border bg-indigo-500"
+      className="dark:text-white cursor-pointer bg-indigo-200 hover:bg-indigo-100 dark:bg-indigo-800 dark:hover:bg-indigo-700 text-center p-2 rounded border font-semibold"
     >
       {props.nama}
     </div>
