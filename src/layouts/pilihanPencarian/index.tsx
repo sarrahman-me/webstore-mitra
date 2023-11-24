@@ -27,11 +27,11 @@ const PilihanPencarian = () => {
   }, []);
 
   return (
-    <div className="w-full rounded p-2">
+    <div className="w-full rounded p-1">
       {!pilihan.kategori && (
-        <div className="bg-white p-2 rounded">
+        <div className="bg-white dark:bg-gray-800 p-2 rounded">
           <Typography otherClass="my-2" align="center">
-            Pilih Kategori
+            Pilihan Kategori
           </Typography>
           <div className="grid grid-cols-2 gap-3">
             {kategori.map((item: any, index: number) => (
@@ -51,9 +51,9 @@ const PilihanPencarian = () => {
       )}
 
       {pilihan.kategori && !pilihan.ukuran && (
-        <div className="bg-white p-2 rounded">
+        <div className="bg-white dark:bg-gray-800 p-2 rounded">
           <Typography otherClass="my-2" align="center">
-            Pilih Ukuran
+            Pilihan Ukuran
           </Typography>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
             {ukuran.map((item: any, index: number) => (
@@ -88,9 +88,8 @@ const PilihanPencarian = () => {
                   ukuran: "",
                 })
               }
-              variant="text"
             >
-              Reset Filter
+              Pilih ulang
             </Button>
           </div>
         </div>
@@ -105,7 +104,7 @@ const Pill = (props: { nama: string; onClick: any }) => {
   return (
     <div
       onClick={props.onClick}
-      className="cursor-pointer hover:bg-white text-center p-2 rounded border bg-indigo-50"
+      className="text-white cursor-pointer hover:bg-indigo-400 text-center p-2 rounded border bg-indigo-500"
     >
       {props.nama}
     </div>
