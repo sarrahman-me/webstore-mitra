@@ -1,5 +1,5 @@
 "use client";
-import { Typography } from "@/src/components/atoms";
+import { Button, Typography } from "@/src/components/atoms";
 import { CatalogProducts } from "@/src/components/oraganisms";
 import { GetDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
@@ -80,6 +80,19 @@ const PilihanPencarian = () => {
             unPagination={true}
             atribut={`kategori=${pilihan.kategori}&ukuran=${pilihan.ukuran}`}
           />
+          <div className="flex justify-center">
+            <Button
+              onClick={() =>
+                setPilihan({
+                  kategori: "",
+                  ukuran: "",
+                })
+              }
+              variant="text"
+            >
+              Reset Filter
+            </Button>
+          </div>
         </div>
       )}
     </div>
