@@ -30,7 +30,7 @@ const PilihanPencarian = () => {
     <div className="w-full rounded p-1">
       {!pilihan.kategori && (
         <div className="bg-white dark:bg-gray-800 p-2 rounded">
-          <Typography otherClass="my-2" align="center">
+          <Typography variant="subtitle" otherClass="my-2" align="center">
             Pilihan Kategori
           </Typography>
           <div className="grid grid-cols-2 gap-3">
@@ -52,7 +52,7 @@ const PilihanPencarian = () => {
 
       {pilihan.kategori && !pilihan.ukuran && (
         <div className="bg-white dark:bg-gray-800 p-2 rounded">
-          <Typography otherClass="my-2" align="center">
+          <Typography variant="subtitle" otherClass="my-2" align="center">
             Pilihan Ukuran
           </Typography>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
