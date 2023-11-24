@@ -3,10 +3,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CardProduct } from "../../molecules";
 import { GetDataApi } from "@/src/utils";
+import { Tb3DCubeSphereOff } from "react-icons/tb";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
+import { Typography } from "../../atoms";
 
 export default function CatalogProducts(props: {
   atribut?: string;
@@ -65,7 +67,14 @@ export default function CatalogProducts(props: {
               </div>
             ))
           ) : (
-            <div className="text-center">Data tidak ditemukan.</div>
+            <div className="my-2">
+              <div className="flex justify-center m-1">
+                <Tb3DCubeSphereOff className="text-indigo-500 text-4xl md:text-5xl shadow shadow-indigo-300 p-1 border rounded-full" />
+              </div>
+              <Typography otherClass="my-2" color="secondary" variant="helper" align="center">
+                Tidak ada barang
+              </Typography>
+            </div>
           )}
         </div>
       </div>

@@ -84,12 +84,14 @@ const PilihanPencarian = () => {
           />
           <div className="flex justify-center">
             <Button
-              onClick={() =>
+              onClick={() => {
                 setPilihan({
                   kategori: "",
                   ukuran: "",
-                })
-              }
+                });
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              variant="outlined"
             >
               Pilih ulang
             </Button>
@@ -106,7 +108,7 @@ const Pill = (props: { nama: string; onClick: any }) => {
   return (
     <div
       onClick={props.onClick}
-      className="dark:text-white cursor-pointer bg-indigo-200 hover:bg-indigo-100 dark:bg-indigo-800 dark:hover:bg-indigo-700 text-center p-2 rounded border font-semibold"
+      className="dark:text-white cursor-pointer bg-indigo-200 hover:bg-indigo-100 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-center p-2 rounded border font-semibold"
     >
       {props.nama}
     </div>
