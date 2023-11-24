@@ -139,6 +139,7 @@ const DetailBarang = () => {
         <div>
           <p className="underline font-semibold m-2">{`Rekomendasi`}</p>
           <CatalogProducts
+            unPagination={true}
             atribut={`kategori=${barang.kategori}&ukuran=${barang.ukuran}&motif=${barang.motif}&tekstur=${barang.tekstur}`}
           />
         </div>

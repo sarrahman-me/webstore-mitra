@@ -2,6 +2,7 @@ import AppBar from "./appBar";
 import DetailProductCard from "./DetailProductCard";
 import KalkulatorKeramik from "./kalkulatorBarang";
 import MotifList from "./MotifList";
+import PilihanPencarian from "./pilihanPencarian";
 import SimulasiKeramik from "./simulasiKeramik";
 
 export {
@@ -10,4 +11,5 @@ export {
   AppBar,
   SimulasiKeramik,
   MotifList,
+  PilihanPencarian,
 };

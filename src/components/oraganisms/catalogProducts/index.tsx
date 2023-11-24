@@ -11,6 +11,8 @@ import {
 export default function CatalogProducts(props: {
   atribut?: string;
   path?: string;
+  unPagination?: boolean;
+  limit?: string;
 }) {
   const router = useRouter();
   const params = useSearchParams();
@@ -25,16 +27,16 @@ export default function CatalogProducts(props: {
   useEffect(() => {
     async function fetchData() {
       const response = await GetDataApi(
-        `${process.env.NEXT_PUBLIC_HOST}/${path}?${
-          props.atribut || ""
-        }&limit=48&page=${currentPage}`
+        `${process.env.NEXT_PUBLIC_HOST}/${path}?${props.atribut || ""}&limit=${
+          props.limit || "48"
+        }&page=${currentPage}`
       );
       setBarang(response.data);
       setMetadata(response.metadata);
       setLoading(false);
     }
     fetchData();
-  }, [currentPage, props.atribut, path]);
+  }, [currentPage, props.atribut, path, props.limit]);
 
   const handleNextPage = () => {
     if (currentPage < metadata?.totalPages) {
@@ -67,7 +69,7 @@ export default function CatalogProducts(props: {
           )}
         </div>
       </div>
-      {!loading && barang.length > 0 ? (
+      {!loading && !props.unPagination && barang.length > 0 ? (
         <div className="flex justify-between items-center p-2">
           <div>
             <p className="text-xs md:text-sm text-gray-500">
