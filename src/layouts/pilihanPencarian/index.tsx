@@ -29,7 +29,7 @@ const PilihanPencarian = () => {
   return (
     <div className="w-full rounded p-2">
       {!pilihan.kategori && (
-        <div>
+        <div className="bg-white p-2 rounded">
           <Typography otherClass="my-2" align="center">
             Pilih Kategori
           </Typography>
