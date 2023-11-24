@@ -41,14 +41,14 @@ export default function CatalogProducts(props: {
   const handleNextPage = () => {
     if (currentPage < metadata?.totalPages) {
       setCurrentPage(currentPage + 1);
-      router.push(`/barang?page=${currentPage + 1}`);
+      router.push(`?page=${currentPage + 1}`);
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      router.push(`/barang?page=${currentPage - 1}`);
+      router.push(`?page=${currentPage - 1}`);
     }
   };
 

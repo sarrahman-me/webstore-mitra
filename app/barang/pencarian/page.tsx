@@ -8,7 +8,7 @@ export default async function Pencarian(req: any) {
     <div>
       <AppBar allowBack={true} />
       <p className="underline font-semibold m-2">Hasil pencarian</p>
-      <CatalogProducts atribut={`query=${query}`} path="products/search" />
+      <CatalogProducts limit="100" unPagination={true} atribut={`query=${query}`} path="products/search" />
     </div>
   );
 }
