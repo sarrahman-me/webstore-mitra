@@ -42,15 +42,21 @@ export default function CatalogProducts(props: {
 
   const handleNextPage = () => {
     if (currentPage < metadata?.totalPages) {
-      setCurrentPage(currentPage + 1);
-      router.push(`?page=${currentPage + 1}`);
+      const nextPage = currentPage + 1;
+      const queryParams = new URLSearchParams(params.toString());
+      queryParams.set("page", nextPage.toString());
+      router.push(`?${queryParams.toString()}`);
+      setCurrentPage(nextPage);
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-      router.push(`?page=${currentPage - 1}`);
+      const prevPage = currentPage - 1;
+      const queryParams = new URLSearchParams(params.toString());
+      queryParams.set("page", prevPage.toString());
+      router.push(`?${queryParams.toString()}`);
+      setCurrentPage(prevPage);
     }
   };
 
@@ -71,7 +77,12 @@ export default function CatalogProducts(props: {
               <div className="flex justify-center m-1">
                 <Tb3DCubeSphereOff className="text-blue-500 text-4xl md:text-5xl shadow shadow-blue-300 p-1 border rounded-full" />
               </div>
-              <Typography otherClass="my-2" color="secondary" variant="helper" align="center">
+              <Typography
+                otherClass="my-2"
+                color="secondary"
+                variant="helper"
+                align="center"
+              >
                 Tidak ada barang
               </Typography>
             </div>

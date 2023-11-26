@@ -46,15 +46,11 @@ export default function MotifList() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         {motifList?.map((motif) => (
           <div
-            onClick={() => router.push(`/barang/motif/${motif.title}`)}
+            onClick={() => router.push(`/barang/filter?motif=${motif.title}`)}
             key={motif.title}
             className="p-2 cursor-pointer"
           >
-            <Image
-              className="rounded-md"
-              src={motif.image}
-              alt={motif.title}
-            />
+            <Image className="rounded-md" src={motif.image} alt={motif.title} />
           </div>
         ))}
       </div>

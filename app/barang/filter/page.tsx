@@ -10,7 +10,10 @@ export default function Motif() {
   const searchParams = useSearchParams();
   const kategori = searchParams.get("kategori");
   const ukuran = searchParams.get("ukuran");
-  const queryAtribute = `kategori=${kategori}&ukuran=${ukuran}`;
+  const motif = searchParams.get("motif");
+  const queryAtribute = `kategori=${kategori || ""}&ukuran=${
+    ukuran || ""
+  }&motif=${motif || ""}`;
 
   return (
     <div>
@@ -19,7 +22,7 @@ export default function Motif() {
       {webstore.show_price && (
         <div>
           <p className="underline font-semibold m-2">
-            Promo {kategori} {ukuran}
+            Promo {kategori} {ukuran} {motif}
           </p>
           <CatalogProducts
             limit="100"
@@ -29,11 +32,9 @@ export default function Motif() {
         </div>
       )}
       <p className="underline font-semibold m-2">
-        Pilihan {kategori} {ukuran}
+        Pilihan {kategori} {ukuran} {motif}
       </p>
       <CatalogProducts
-        unPagination={true}
-        limit="100"
         atribut={queryAtribute}
       />
     </div>
