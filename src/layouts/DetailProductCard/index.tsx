@@ -47,7 +47,7 @@ export default function DetailProductCard(props: { barang: any }) {
       </div>
       <div className="bg-white dark:bg-slate-800 rounded-md borde p-2 w-full shadow">
         <div className="divide-y-4 md:divide-y-8 divide-transparent ml-2">
-          <p className="text-sm md:text-base text-indigo-500">
+          <p className="text-sm md:text-base text-blue-500">
             {props.barang.kategori}
           </p>
           <p className="text-sm md:text-base font-semibold">

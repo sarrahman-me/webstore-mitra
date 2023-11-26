@@ -81,18 +81,18 @@ const SearchBar = () => {
           placeholder="Cari berdasarkan"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="bg-white dark:bg-slate-800 w-full px-4 py-2 rounded-md shadow-md placeholder-gray-500 focus:outline-none focus:ring focus:ring-indigo-300"
+          className="bg-white dark:bg-slate-800 w-full px-4 py-2 rounded-md shadow-md placeholder-gray-500 focus:outline-none focus:ring focus:ring-blue-300"
         />
         <div className="absolute right-0 p-2">
           <button
             type="submit"
-            className="mr-3 bg-transparent p-1 cursor-pointer focus:outline-none text-indigo-500"
+            className="mr-3 bg-transparent p-1 cursor-pointer focus:outline-none text-blue-500"
           >
             <RiSearchLine size={20} />
           </button>
           {/* <button
             type="button"
-            className="bg-transparent p-1 cursor-pointer focus:outline-none text-indigo-500"
+            className="bg-transparent p-1 cursor-pointer focus:outline-none text-blue-500"
             onClick={handleImageIconClick}
             title="Pencarian Gambar"
           >
@@ -114,7 +114,7 @@ const SearchBar = () => {
               />
               <button
                 type="submit"
-                className="mr-3 bg-transparent p-1 cursor-pointer focus:outline-none text-indigo-500"
+                className="mr-3 bg-transparent p-1 cursor-pointer focus:outline-none text-blue-500"
               >
                 <AiOutlineSend size={20} />
               </button>

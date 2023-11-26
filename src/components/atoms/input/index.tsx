@@ -25,7 +25,7 @@ export default function Input(props: {
         onChange={props.onChange}
         className={`bg-gray-50 border ${
           props.error ? "border-red-500" : "border-gray-300"
-        } text-gray-900 bg-white sm:text-sm rounded-lg focus:border-indigo-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 focus:outline-none focus:ring focus:ring-indigo-300`}
+        } text-gray-900 bg-white sm:text-sm rounded-lg focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring focus:ring-blue-300`}
         placeholder={props.placeholder}
       />
       {props.error && (

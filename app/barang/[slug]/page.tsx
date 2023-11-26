@@ -111,14 +111,16 @@ const DetailBarang = () => {
         </SectionLayout>
 
         {/* whatsapp */}
-        <Button
-          onClick={handlePesan}
-          size="full"
-          color="green"
-          icon={<FaWhatsapp />}
-        >
-          Whatsapp
-        </Button>
+        <div className="sticky bottom-0 z-50">
+          <Button
+            onClick={handlePesan}
+            size="full"
+            color="green"
+            icon={<FaWhatsapp />}
+          >
+            Whatsapp
+          </Button>
+        </div>
       </div>
 
       {/* barang sejenis */}

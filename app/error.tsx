@@ -51,7 +51,7 @@ export default function Error({
         </ul>
         <button
           onClick={() => reset()}
-          className="bg-white text-indigo-500 px-6 py-2 rounded-full mt-6 hover:bg-indigo-500 hover:text-white transition duration-300"
+          className="bg-white text-blue-500 px-6 py-2 rounded-full mt-6 hover:bg-blue-500 hover:text-white transition duration-300"
         >
           Refresh
         </button>

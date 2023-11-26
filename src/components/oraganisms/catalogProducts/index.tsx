@@ -69,7 +69,7 @@ export default function CatalogProducts(props: {
           ) : (
             <div className="my-2">
               <div className="flex justify-center m-1">
-                <Tb3DCubeSphereOff className="text-indigo-500 text-4xl md:text-5xl shadow shadow-indigo-300 p-1 border rounded-full" />
+                <Tb3DCubeSphereOff className="text-blue-500 text-4xl md:text-5xl shadow shadow-blue-300 p-1 border rounded-full" />
               </div>
               <Typography otherClass="my-2" color="secondary" variant="helper" align="center">
                 Tidak ada barang
@@ -97,14 +97,14 @@ export default function CatalogProducts(props: {
             <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
-              className="text-2xl text-indigo-500 disabled:text-gray-400 disabled:cursor-not-allowed mr-7 hover:bg-indigo-500 disabled:bg-white hover:text-white rounded-full"
+              className="text-2xl text-blue-500 disabled:text-gray-400 disabled:cursor-not-allowed mr-7 hover:bg-blue-500 disabled:bg-white hover:text-white rounded-full"
             >
               <BsFillArrowLeftCircleFill />
             </button>
             <button
               onClick={handleNextPage}
               disabled={currentPage === metadata?.totalPages}
-              className="text-2xl text-indigo-500 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-indigo-500 disabled:bg-white hover:text-white rounded-full"
+              className="text-2xl text-blue-500 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-blue-500 disabled:bg-white hover:text-white rounded-full"
             >
               <BsFillArrowRightCircleFill />
             </button>

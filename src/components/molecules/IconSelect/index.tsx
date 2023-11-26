@@ -47,7 +47,7 @@ export default function IconSelect(props: { options: string[] }) {
           key={option}
           className={`${
             props.options.includes(option)
-              ? "text-indigo-400 border rounded-full border-indigo-400"
+              ? "text-blue-400 border rounded-full border-blue-400"
               : "text-gray-400"
           } text-lg md:text-2xl cursor-pointer transition duration-300 p-1`}
           title={option}

@@ -4,7 +4,6 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import { CardProduct } from "../../molecules";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { useRouter } from "next/navigation";
 
 export default function SwiperProduct(props: {
@@ -19,10 +18,12 @@ export default function SwiperProduct(props: {
       <div className="flex justify-between items-center mr-5">
         <p className="underline font-semibold m-2">{props.title}</p>
         {props.url && (
-          <BsFillArrowRightCircleFill
+          <p
+            className="text-xs sm:text-sm cursor-pointer text-blue-500"
             onClick={() => router.push(props.url)}
-            className="text-indigo-500 hover:bg-indigo-500 hover:text-white rounded-full text-2xl cursor-pointer"
-          />
+          >
+            Lihat Semua
+          </p>
         )}
       </div>
       <div className="cursor-grab select-none">
@@ -49,9 +50,7 @@ export default function SwiperProduct(props: {
         >
           {props.products?.map((product) => (
             <SwiperSlide key={product.slug} className="p-1">
-              <CardProduct
-                barang={product}
-              />
+              <CardProduct barang={product} />
             </SwiperSlide>
           ))}
         </Swiper>

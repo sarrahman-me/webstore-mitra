@@ -1,10 +1,12 @@
 "use client";
-import { Button, Typography } from "@/src/components/atoms";
-import { CatalogProducts } from "@/src/components/oraganisms";
+import { Typography } from "@/src/components/atoms";
 import { GetDataApi } from "@/src/utils";
+import { useRouter } from "next/navigation";
+import { Loading } from "notiflix";
 import { useEffect, useState } from "react";
 
 const PilihanPencarian = () => {
+  const router = useRouter();
   const [kategori, setKategori] = useState([] as any);
   const [ukuran, setUkuran] = useState([] as any);
   const [pilihan, setPilihan] = useState({
@@ -60,41 +62,15 @@ const PilihanPencarian = () => {
               <Pill
                 key={index}
                 nama={item?.nama_ukuran}
-                onClick={() =>
-                  setPilihan({
-                    kategori: pilihan.kategori,
-                    ukuran: item?.nama_ukuran,
-                  })
-                }
+                onClick={() => {
+                  Loading.dots("Mencari...");
+                  router.push(
+                    `/barang/filter?kategori=${pilihan.kategori}&ukuran=${item?.nama_ukuran}`
+                  );
+                  Loading.remove();
+                }}
               />
             ))}
-          </div>
-        </div>
-      )}
-
-      {pilihan.kategori && pilihan.ukuran && (
-        <div>
-          <p className="underline font-semibold m-2">
-            Pilihan {pilihan.kategori} {pilihan.ukuran}
-          </p>
-          <CatalogProducts
-            limit="100"
-            unPagination={true}
-            atribut={`kategori=${pilihan.kategori}&ukuran=${pilihan.ukuran}`}
-          />
-          <div className="flex justify-center">
-            <Button
-              onClick={() => {
-                setPilihan({
-                  kategori: "",
-                  ukuran: "",
-                });
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              variant="outlined"
-            >
-              Pilih ulang
-            </Button>
           </div>
         </div>
       )}
@@ -108,7 +84,7 @@ const Pill = (props: { nama: string; onClick: any }) => {
   return (
     <div
       onClick={props.onClick}
-      className="dark:text-white cursor-pointer bg-indigo-200 hover:bg-indigo-100 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-center p-2 rounded border font-semibold"
+      className="dark:text-white cursor-pointer bg-blue-200 hover:bg-blue-100 dark:bg-blue-600 dark:hover:bg-blue-700 text-center p-2 rounded border font-semibold"
     >
       {props.nama}
     </div>

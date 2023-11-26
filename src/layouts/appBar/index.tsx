@@ -35,7 +35,7 @@ export default function AppBar(props: { allowBack?: boolean }) {
   }, [dispatch]);
 
   return (
-    <div className="bg-white dark:bg-slate-800 flex justify-between items-center p-2">
+    <div className="sticky top-0 z-50 bg-blue-50 dark:bg-blue-950 flex justify-between items-center p-2">
       {props.allowBack && (
         <p
           onClick={() => router.back()}

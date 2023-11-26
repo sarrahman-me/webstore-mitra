@@ -55,7 +55,7 @@ const CardProduct = (props: { barang: any }) => {
       className={`bg-white dark:bg-slate-800 rounded shadow cursor-pointer relative hover:shadow-md`}
     >
       {isNewProduct() && (
-        <div className="bg-indigo-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0">
+        <div className="bg-blue-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0">
           Baru
         </div>
       )}
@@ -68,7 +68,7 @@ const CardProduct = (props: { barang: any }) => {
         />
       </div>
       <div className="p-1 divide-y-2 md:divide-y-4 divide-transparent">
-        <p className="text-xs text-indigo-500">{props.barang?.kategori}</p>
+        <p className="text-xs text-blue-500">{props.barang?.kategori}</p>
         <p className="text-xs md:text-sm">{props.barang?.nama_barang}</p>
         {webstore.show_price && (
           <div>
