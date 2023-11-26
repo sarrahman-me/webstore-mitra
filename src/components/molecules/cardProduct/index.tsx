@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
+import { ImFire } from "react-icons/im";
 import { formatCurrency } from "@/src/utils";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
@@ -54,7 +55,16 @@ const CardProduct = (props: { barang: any }) => {
       }}
       className={`bg-white dark:bg-slate-800 rounded shadow cursor-pointer relative hover:shadow-md`}
     >
-      {isNewProduct() && (
+      {props.barang.promo && webstore.show_price && (
+        <div className="bg-red-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
+          {Number(calculateDiscountPercentage()) >= 15 ? (
+            <ImFire className="text-white mr-1" />
+          ) : null}
+          {Number(calculateDiscountPercentage()) >= 15 ? "Hot" : "Promo"}
+        </div>
+      )}
+
+      {isNewProduct() && !props.barang.promo && (
         <div className="bg-blue-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0">
           Baru
         </div>
