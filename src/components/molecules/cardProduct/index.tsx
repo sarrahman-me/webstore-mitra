@@ -4,6 +4,7 @@ import { ImFire } from "react-icons/im";
 import { formatCurrency } from "@/src/utils";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
+import { FaThumbsUp } from "react-icons/fa";
 
 const CardProduct = (props: { barang: any }) => {
   const router = useRouter();
@@ -55,7 +56,14 @@ const CardProduct = (props: { barang: any }) => {
       }}
       className={`bg-white dark:bg-slate-800 rounded shadow cursor-pointer relative hover:shadow-md`}
     >
-      {props.barang.promo && webstore.show_price && (
+      {props.barang.promo && webstore.show_price && props.barang.stok > 500 && (
+        <div className="bg-green-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
+          <FaThumbsUp className="text-white mr-1" />
+          Pilihan Terbaik
+        </div>
+      )}
+
+      {props.barang.promo && webstore.show_price && props.barang.stok < 500 && (
         <div className="bg-red-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
           {Number(calculateDiscountPercentage()) >= 15 ? (
             <ImFire className="text-white mr-1" />
@@ -104,15 +112,15 @@ const CardProduct = (props: { barang: any }) => {
         {webstore.show_stock && (
           <div>
             <p className="text-xs md:text-sm">Stok: {props.barang.stok}</p>
-            {props.barang.stok > 600 ? (
+            {props.barang.stok > 500 ? (
               <p
-                className={`my-1 p-0.5 text-xs rounded-full bg-green-500 text-white inline px-2`}
+                className={`my-1 p-0.5 text-xs rounded-full bg-green-300 dark:bg-green-700 inline px-2`}
               >
                 Banyak
               </p>
             ) : props.barang.stok < 50 ? (
               <p
-                className={`my-1 p-0.5 text-xs rounded-full bg-orange-500 text-white inline px-2`}
+                className={`my-1 p-0.5 text-xs rounded-full bg-orange-300 dark:bg-orange-700 inline px-2`}
               >
                 Terbatas
               </p>
