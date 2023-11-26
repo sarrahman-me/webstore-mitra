@@ -19,7 +19,7 @@ export default function SwiperProduct(props: {
         <p className="underline font-semibold m-2">{props.title}</p>
         {props.url && (
           <p
-            className="text-xs sm:text-sm cursor-pointer text-blue-500"
+            className="text-xs sm:text-sm cursor-pointer text-blue-500 select-none"
             onClick={() => router.push(props.url)}
           >
             Lihat Semua

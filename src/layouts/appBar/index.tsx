@@ -44,7 +44,9 @@ export default function AppBar(props: { allowBack?: boolean }) {
           <AiOutlineArrowLeft />
         </p>
       )}
-      <p className="font-semibold">{webstore.nama_webstore}</p>
+      <p onClick={() => router.push("/")} className="cursor-pointer font-semibold select-none">
+        {webstore.nama_webstore}
+      </p>
       <ToggleDarkMode />
     </div>
   );

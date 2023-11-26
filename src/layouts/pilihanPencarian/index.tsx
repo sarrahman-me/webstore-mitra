@@ -96,7 +96,7 @@ const Pill = (props: { nama: string; onClick: any }) => {
   return (
     <div
       onClick={props.onClick}
-      className="dark:text-white cursor-pointer bg-blue-200 hover:bg-blue-100 dark:bg-blue-600 dark:hover:bg-blue-700 text-center p-2 rounded border font-semibold"
+      className="dark:text-white cursor-pointer bg-blue-200 dark:bg-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900 text-center p-2 rounded border font-semibold"
     >
       {props.nama}
     </div>

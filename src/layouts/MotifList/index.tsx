@@ -1,8 +1,4 @@
 "use client";
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper";
 import Image from "next/image";
 import WoodMotif from "@/public/wood.png";
 import StoneMotif from "@/public/stone.png";
@@ -43,48 +39,24 @@ export default function MotifList() {
   const router = useRouter();
 
   return (
-    <div>
-      <div className="flex justify-between items-center mr-5">
+    <div className="my-2">
+      <div className="flex justify-between items-center">
         <p className="underline font-semibold m-2">Pilihan Motif</p>
       </div>
-      <div className="cursor-grab select-none">
-        <Swiper
-          slidesPerView={2.3}
-          spaceBetween={3}
-          modules={[Pagination]}
-          grabCursor={true}
-          pagination={{ clickable: true }}
-          breakpoints={{
-            640: {
-              slidesPerView: 3.2,
-              spaceBetween: 3,
-            },
-            768: {
-              slidesPerView: 4.5,
-              spaceBetween: 3,
-            },
-            1024: {
-              slidesPerView: 6,
-              spaceBetween: 3,
-            },
-          }}
-        >
-          {motifList?.map((motif) => (
-            <SwiperSlide
-              onClick={() =>
-                router.push(`/barang/motif/${motif.title}`)
-              }
-              key={motif.title}
-              className="p-2 cursor-pointer"
-            >
-              <Image
-                className="mx-2 rounded-md"
-                src={motif.image}
-                alt={motif.title}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+        {motifList?.map((motif) => (
+          <div
+            onClick={() => router.push(`/barang/motif/${motif.title}`)}
+            key={motif.title}
+            className="p-2 cursor-pointer"
+          >
+            <Image
+              className="rounded-md"
+              src={motif.image}
+              alt={motif.title}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
