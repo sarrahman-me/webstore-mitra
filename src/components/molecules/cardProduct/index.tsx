@@ -59,7 +59,7 @@ const CardProduct = (props: { barang: any }) => {
       {props.barang.promo && webstore.show_price && props.barang.stok > 500 && (
         <div className="bg-green-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
           <FaThumbsUp className="text-white mr-1" />
-          Pilihan Terbaik
+          Terbaik
         </div>
       )}
 
@@ -86,7 +86,9 @@ const CardProduct = (props: { barang: any }) => {
         />
       </div>
       <div className="p-1 divide-y-2 md:divide-y-4 divide-transparent">
-        <p className="text-xs text-blue-500">{props.barang?.kategori}</p>
+        <p className="text-xs text-blue-500">
+          {props.barang?.kategori} {props.barang.tekstur}
+        </p>
         <p className="text-xs md:text-sm">{props.barang?.nama_barang}</p>
         {webstore.show_price && (
           <div>
@@ -129,7 +131,7 @@ const CardProduct = (props: { barang: any }) => {
         )}
         <div className="text-xs flex justify-between items-center">
           <div className="flex items-center divide-x-8 divide-transparent">
-            <p>{props.barang?.tekstur}</p>
+            <p>{props.barang?.kualitas}</p>
           </div>
           <p>{props.barang?.ukuran}</p>
         </div>
