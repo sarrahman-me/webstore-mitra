@@ -92,9 +92,22 @@ const CardProduct = (props: { barang: any }) => {
           </div>
         )}
         {webstore.show_stock && (
-          <p className="text-xs md:text-sm">
-            Stok: {props.barang.stok}
-          </p>
+          <div>
+            <p className="text-xs md:text-sm">Stok: {props.barang.stok}</p>
+            {props.barang.stok > 600 ? (
+              <p
+                className={`my-1 p-0.5 text-xs rounded-full bg-green-500 text-white inline px-2`}
+              >
+                Banyak
+              </p>
+            ) : props.barang.stok < 50 ? (
+              <p
+                className={`my-1 p-0.5 text-xs rounded-full bg-orange-500 text-white inline px-2`}
+              >
+                Terbatas
+              </p>
+            ) : null}
+          </div>
         )}
         <div className="text-xs flex justify-between items-center">
           <div className="flex items-center divide-x-8 divide-transparent">
