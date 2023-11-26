@@ -8,11 +8,25 @@ import { useEffect, useState } from "react";
 const PilihanPencarian = () => {
   const router = useRouter();
   const [kategori, setKategori] = useState([] as any);
-  const [ukuran, setUkuran] = useState([] as any);
   const [pilihan, setPilihan] = useState({
     kategori: "",
     ukuran: "",
   });
+
+  const daftarUkuran: Record<string, string[]> = {
+    Keramik: [
+      "25x25",
+      "30x30",
+      "40x40",
+      "50x50",
+      "60x60",
+      "20x40",
+      "25x40",
+      "25x50",
+      "30x60",
+    ],
+    Granit: ["60x60", "60x120", "30x60"],
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,10 +34,6 @@ const PilihanPencarian = () => {
         `${process.env.NEXT_PUBLIC_HOST}/products/kategori`
       );
       setKategori(responseKategori?.data);
-      const responseUkuran = await GetDataApi(
-        `${process.env.NEXT_PUBLIC_HOST}/products/ukuran`
-      );
-      setUkuran(responseUkuran?.data);
     };
     fetchData();
   }, []);
@@ -33,7 +43,7 @@ const PilihanPencarian = () => {
       {!pilihan.kategori && (
         <div className="bg-white dark:bg-gray-800 p-2 rounded">
           <Typography otherClass="my-2" align="center">
-            Pilihan Kategori
+            Pilih Kategori
           </Typography>
           <div className="grid grid-cols-2 gap-3">
             {kategori.map((item: any, index: number) => (
@@ -55,22 +65,24 @@ const PilihanPencarian = () => {
       {pilihan.kategori && !pilihan.ukuran && (
         <div className="bg-white dark:bg-gray-800 p-2 rounded">
           <Typography otherClass="my-2" align="center">
-            Pilihan Ukuran
+            {pilihan.kategori} Ukuran ?
           </Typography>
           <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
-            {ukuran.map((item: any, index: number) => (
-              <Pill
-                key={index}
-                nama={item?.nama_ukuran}
-                onClick={() => {
-                  Loading.dots("Mencari...");
-                  router.push(
-                    `/barang/filter?kategori=${pilihan.kategori}&ukuran=${item?.nama_ukuran}`
-                  );
-                  Loading.remove();
-                }}
-              />
-            ))}
+            {daftarUkuran[pilihan.kategori || "Keramik"].map(
+              (item: any, index: number) => (
+                <Pill
+                  key={index}
+                  nama={item}
+                  onClick={() => {
+                    Loading.dots("Mencari...");
+                    router.push(
+                      `/barang/filter?kategori=${pilihan.kategori}&ukuran=${item}`
+                    );
+                    Loading.remove();
+                  }}
+                />
+              )
+            )}
           </div>
         </div>
       )}
