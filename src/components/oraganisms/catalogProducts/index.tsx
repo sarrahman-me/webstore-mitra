@@ -18,7 +18,10 @@ export default function CatalogProducts(props: {
 }) {
   const router = useRouter();
   const params = useSearchParams();
-  const page = params.get("page");
+  let page = params.get("page");
+  if (props.unPagination) {
+    page = "1";
+  }
   const [barang, setBarang] = useState([] as any);
   const [currentPage, setCurrentPage] = useState(page ? Number(page) : 1);
   const [metadata, setMetadata] = useState({} as any);
