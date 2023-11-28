@@ -57,13 +57,13 @@ const CardProduct = (props: { barang: any }) => {
       className={`bg-white dark:bg-slate-800 rounded shadow cursor-pointer relative hover:shadow-md`}
     >
       {props.barang.promo && webstore.show_price && props.barang.stok > 500 && (
-        <div className="bg-green-500 text-white text-xs md:text-sm p-1 rounded-full absolute top-0 right-0 flex items-center">
+        <div className="bg-green-500 text-white text-xs p-1 rounded-full absolute top-0 right-0 flex items-center">
           <FaThumbsUp className="text-white" />
         </div>
       )}
 
       {props.barang.promo && webstore.show_price && (
-        <div className="bg-red-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
+        <div className="bg-red-500 text-white text-xs px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
           {Number(calculateDiscountPercentage()) >= 15 ? (
             <ImFire className="text-white mr-1" />
           ) : null}
@@ -72,7 +72,7 @@ const CardProduct = (props: { barang: any }) => {
       )}
 
       {isNewProduct() && !props.barang.promo && (
-        <div className="bg-blue-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0">
+        <div className="bg-blue-500 text-white text-xs px-2 py-1 rounded-br absolute top-0 left-0">
           Baru
         </div>
       )}
@@ -90,7 +90,7 @@ const CardProduct = (props: { barang: any }) => {
             <div className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white max-w-fit px-2 text-xs p-0.5 rounded-br">
               Tersedia
             </div>
-          ) : props.barang.stok < 100 && props.barang.stok > 0 ? (
+          ) : props.barang.stok < 50 && props.barang.stok > 0 ? (
             <div className="bg-gradient-to-br from-orange-300 to-orange-500 dark:from-orange-700 dark:to-orange-900 text-white max-w-fit px-2 text-xs p-0.5 rounded-br">
               Terbatas
             </div>
