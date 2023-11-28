@@ -57,13 +57,12 @@ const CardProduct = (props: { barang: any }) => {
       className={`bg-white dark:bg-slate-800 rounded shadow cursor-pointer relative hover:shadow-md`}
     >
       {props.barang.promo && webstore.show_price && props.barang.stok > 500 && (
-        <div className="bg-green-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
-          <FaThumbsUp className="text-white mr-1" />
-          Terbaik
+        <div className="bg-green-500 text-white text-xs md:text-sm p-1 rounded-full absolute top-0 right-0 flex items-center">
+          <FaThumbsUp className="text-white" />
         </div>
       )}
 
-      {props.barang.promo && webstore.show_price && props.barang.stok < 500 && (
+      {props.barang.promo && webstore.show_price && (
         <div className="bg-red-500 text-white text-xs md:text-sm px-2 py-1 rounded-br absolute top-0 left-0 flex items-center">
           {Number(calculateDiscountPercentage()) >= 15 ? (
             <ImFire className="text-white mr-1" />
