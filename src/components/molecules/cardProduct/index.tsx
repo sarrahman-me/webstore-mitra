@@ -85,6 +85,24 @@ const CardProduct = (props: { barang: any }) => {
           alt={props.barang?.nama_barang}
         />
       </div>
+      {webstore.show_stock && (
+        <div>
+          {props.barang.stok > 500 ? (
+            <div className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white max-w-fit px-2 text-xs p-0.5 rounded-br">
+              Tersedia
+            </div>
+          ) : props.barang.stok < 100 && props.barang.stok > 0 ? (
+            <div className="bg-gradient-to-br from-orange-300 to-orange-500 dark:from-orange-700 dark:to-orange-900 text-white max-w-fit px-2 text-xs p-0.5 rounded-br">
+              Terbatas
+            </div>
+          ) : props.barang.stok == 0 ? (
+            <div className="bg-gradient-to-br from-red-300 to-red-500 dark:from-red-700 dark:to-red-900 text-white max-w-fit px-2 text-xs p-0.5 rounded-br">
+              Habis
+            </div>
+          ) : null}
+        </div>
+      )}
+
       <div className="p-1 divide-y-2 md:divide-y-4 divide-transparent">
         <p className="text-xs text-blue-500">
           {props.barang?.kategori} {props.barang.tekstur}
@@ -114,19 +132,6 @@ const CardProduct = (props: { barang: any }) => {
         {webstore.show_stock && (
           <div>
             <p className="text-xs md:text-sm">Stok: {props.barang.stok}</p>
-            {props.barang.stok > 500 ? (
-              <p
-                className={`my-1 p-0.5 text-xs rounded-full bg-green-300 dark:bg-green-700 inline px-2`}
-              >
-                Banyak
-              </p>
-            ) : props.barang.stok < 50 ? (
-              <p
-                className={`my-1 p-0.5 text-xs rounded-full bg-orange-300 dark:bg-orange-700 inline px-2`}
-              >
-                Terbatas
-              </p>
-            ) : null}
           </div>
         )}
         <div className="text-xs flex justify-between items-center">
