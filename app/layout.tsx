@@ -2,6 +2,7 @@
 import { Provider } from "react-redux";
 import store from "@/src/redux/store";
 import "./globals.css";
+import Logo from "@/src/components/atoms/Logo";
 
 export default function RootLayout({
   children,
@@ -16,9 +17,9 @@ export default function RootLayout({
       <body id="root">
         <div className="bg-slate-50 dark:bg-slate-900 dark:text-white text-black min-h-screen">
           <Provider store={store}>{children}</Provider>
-          <p className="text-xs text-center text-gray-500 py-5">
-            Powered By TokoKeramik.com
-          </p>
+          <div className=" text-gray-500 py-5 flex items-center justify-center">
+            <p className="text-xs mr-1">Powered By</p> <Logo size="small" />
+          </div>
         </div>
       </body>
     </html>

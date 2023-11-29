@@ -43,16 +43,16 @@ const Home = () => {
           products={barangPromo}
         />
       )}
-      <MotifList />
       <PilihanPencarian />
+      <MotifList />
       <p className="underline font-semibold m-2">Semua Barang</p>
       <CatalogProducts />
       <div className="fixed right-0 bottom-0 m-2">
         <div
           onClick={handlePesan}
-          className="bg-blue-50 dark:bg-slate-800 space-x-2 flex items-center rounded-full p-2 px-4"
+          className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white space-x-2 flex items-center rounded-full p-2 px-4"
         >
-          <RiWhatsappFill className="text-green-500 text-3xl" />
+          <RiWhatsappFill className="text-white text-3xl" />
           <p>Chat</p>
         </div>
       </div>

@@ -111,7 +111,7 @@ const DetailBarang = () => {
         </SectionLayout>
 
         {/* whatsapp */}
-        <div className="sticky bottom-0 z-50">
+        <div className="sticky bottom-0 z-40">
           <Button
             onClick={handlePesan}
             size="full"

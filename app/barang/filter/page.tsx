@@ -3,6 +3,7 @@ import { SearchBar } from "@/src/components/molecules";
 import { CatalogProducts } from "@/src/components/oraganisms";
 import { AppBar } from "@/src/layouts";
 import { useSearchParams } from "next/navigation";
+import { RiWhatsappFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 export default function Motif() {
@@ -14,6 +15,17 @@ export default function Motif() {
   const queryAtribute = `kategori=${kategori || ""}&ukuran=${
     ukuran || ""
   }&motif=${motif || ""}`;
+
+  const whatsappNumber = "+6282157758174";
+
+  const handlePesan = () => {
+    const message = `Halo Admin`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(whatsappLink, "_blank");
+  };
 
   return (
     <div>
@@ -34,9 +46,16 @@ export default function Motif() {
       <p className="underline font-semibold m-2">
         Pilihan {kategori} {ukuran} {motif}
       </p>
-      <CatalogProducts
-        atribut={queryAtribute}
-      />
+      <CatalogProducts atribut={queryAtribute} />
+      <div className="fixed right-0 bottom-0 m-2">
+        <div
+          onClick={handlePesan}
+          className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white space-x-2 flex items-center rounded-full p-2 px-4"
+        >
+          <RiWhatsappFill className="text-white text-3xl" />
+          <p>Chat</p>
+        </div>
+      </div>
     </div>
   );
 }
