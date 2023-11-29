@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     async function fetchData() {
       const responseBarangPromo = await GetDataApi(
-        `${process.env.NEXT_PUBLIC_HOST}/products/barang?promo=true`
+        `${process.env.NEXT_PUBLIC_HOST}/products/barang?promo=true&minstok=25`
       );
       setbarangPromo(responseBarangPromo.data);
     }

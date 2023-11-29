@@ -38,7 +38,7 @@ const DetailBarang = () => {
       const barang = responseBarang.data;
 
       const responseBarangSerupa = await GetDataApi(
-        `${process.env.NEXT_PUBLIC_HOST}/products/barang?kategori=${barang?.kategori}&ukuran=${barang?.ukuran}&motif=${barang?.motif}&tekstur=${barang?.tekstur}`
+        `${process.env.NEXT_PUBLIC_HOST}/products/barang?kategori=${barang?.kategori}&ukuran=${barang?.ukuran}&motif=${barang?.motif}&tekstur=${barang?.tekstur}&minstok=25`
       );
 
       const responseBarangSejenis = await GetDataApi(
