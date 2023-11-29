@@ -50,10 +50,10 @@ export default function Motif() {
       <div className="fixed right-0 bottom-0 m-2">
         <div
           onClick={handlePesan}
-          className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white space-x-2 flex items-center rounded-full p-2 px-4"
+          className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white space-x-2 flex items-center rounded-full md:p-2 md:px-4 p-2"
         >
           <RiWhatsappFill className="text-white text-3xl" />
-          <p>Chat</p>
+          <p className="text-sm hidden md:block">Chat</p>
         </div>
       </div>
     </div>
