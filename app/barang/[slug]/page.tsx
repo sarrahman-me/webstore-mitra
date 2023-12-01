@@ -27,7 +27,7 @@ const DetailBarang = () => {
   const [barang, setBarang] = useState({} as any);
   const { domain } = useSelector((state: any) => state.webstore);
 
-  const whatsappNumber = "+6282157758174";
+  const whatsappNumber = "+6282225601468";
 
   useEffect(() => {
     const fetchData = async () => {

@@ -21,7 +21,7 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const whatsappNumber = "+6282157758174";
+  const whatsappNumber = "+6282225601468";
 
   const handlePesan = () => {
     const message = `Halo Admin`;
