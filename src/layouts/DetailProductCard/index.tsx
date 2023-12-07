@@ -39,7 +39,10 @@ export default function DetailProductCard(props: { barang: any }) {
     <div className="my-2">
       <div className="flex justify-center items-center m-2">
         <img
-          src={props.barang.images[0]}
+          src={
+            props.barang.images[0] ||
+            "https://ik.imagekit.io/sarrahmanme/No-Image-Placeholder.svg.png?updatedAt=1701908821050"
+          }
           alt={props.barang.slug}
           width={250}
           height={250}

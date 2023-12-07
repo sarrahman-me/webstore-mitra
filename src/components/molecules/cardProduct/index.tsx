@@ -80,7 +80,10 @@ const CardProduct = (props: { barang: any }) => {
       <div className="flex justify-center">
         <img
           className="object-contain max-h-28 md:max-h-36 lg:max-h-40 border"
-          src={props.barang?.images[0]}
+          src={
+            props.barang?.images[0] ||
+            "https://ik.imagekit.io/sarrahmanme/No-Image-Placeholder.svg.png?updatedAt=1701908821050"
+          }
           alt={props.barang?.nama_barang}
         />
       </div>

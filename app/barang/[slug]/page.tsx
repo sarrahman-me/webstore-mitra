@@ -98,7 +98,10 @@ const DetailBarang = () => {
           <SectionLayout>
             <SimulasiKeramik
               ukuran={barang.ukuran}
-              imageUrl={barang.images[0]}
+              imageUrl={
+                barang.images[0] ||
+                "https://ik.imagekit.io/sarrahmanme/No-Image-Placeholder.svg.png?updatedAt=1701908821050"
+              }
             />
           </SectionLayout>
         </div>
