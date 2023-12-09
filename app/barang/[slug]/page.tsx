@@ -155,20 +155,21 @@ const DetailBarang = () => {
         <div className="sticky bottom-0 z-40">
           <div className="flex">
             <Button
-              onClick={handleLike}
-              color={isLiked ? "orange" : "red"} // Ubah warna berdasarkan status like
-              icon={<MdFavoriteBorder />}
-            >
-              {isLiked ? "Unlike" : "Like"}{" "}
-              {/* Ubah teks berdasarkan status like */}
-            </Button>
-            <Button
               size="full"
               onClick={handlePesan}
               color="green"
               icon={<FaWhatsapp />}
             >
               Whatsapp
+            </Button>
+            <Button
+              onClick={handleLike}
+              variant={isLiked ? "contained" : "outlined"}
+              color={"red"} // Ubah warna berdasarkan status like
+              icon={<MdFavoriteBorder />}
+            >
+              {isLiked ? "Unlike" : "Like"}{" "}
+              {/* Ubah teks berdasarkan status like */}
             </Button>
           </div>
         </div>
