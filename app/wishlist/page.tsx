@@ -6,6 +6,8 @@ import { AppBar } from "@/src/layouts";
 import { PostDataApi } from "@/src/utils";
 import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import empty from "@/public/empty.png";
+import Image from "next/image";
 
 const Wishlist = () => {
   const [productsWishlist, setProductsWishlist] = useState([] as any);
@@ -92,36 +94,45 @@ const Wishlist = () => {
   return (
     <div>
       <AppBar allowBack={true} />
-      <p className="underline font-semibold m-2">Barang yang kamu suka</p>
-      <div>
-        {productsWishlist.length > 0 ? (
-          <div className="mx-1 my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-            {productsWishlist.map((product: any, i: any) => (
-              <div key={i}>
-                <CardProduct2 barang={product} />
-              </div>
-            ))}
+      {productsWishlist.length > 0 ? (
+        <div>
+          <p className="underline font-semibold m-2">Barang yang kamu suka</p>
+          <div>
+            <div className="mx-1 my-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+              {productsWishlist.map((product: any, i: any) => (
+                <div key={i}>
+                  <CardProduct2 barang={product} />
+                </div>
+              ))}
+            </div>
           </div>
-        ) : (
-          <p className="text-xs md:text-md">Tidak ada barang yang disuka</p>
-        )}
-      </div>
-      <div className="sticky bottom-0 z-40 md:mx-2">
-        <Button
-          onClick={handlePesan}
-          size="full"
-          color="green"
-          icon={<FaWhatsapp />}
-        >
-          Whatsapp
-        </Button>
-      </div>
-      <p className="underline font-semibold m-2">Mirip dengan yang kamu suka</p>
-      <CatalogProducts
-        limit="15"
-        unPagination={true}
-        atribut={`ukuran=${mostCommonSize}&motif=${mostCommonMotif}`}
-      />
+          <div className="sticky bottom-0 z-40 md:mx-2">
+            <Button
+              onClick={handlePesan}
+              size="full"
+              color="green"
+              icon={<FaWhatsapp />}
+            >
+              Whatsapp
+            </Button>
+          </div>
+          <p className="underline font-semibold m-2">
+            Mirip dengan yang kamu suka
+          </p>
+          <CatalogProducts
+            limit="15"
+            unPagination={true}
+            atribut={`ukuran=${mostCommonSize}&motif=${mostCommonMotif}`}
+          />
+        </div>
+      ) : (
+        <div>
+          <Image src={empty} alt="kosong" />
+          <p className="text-sm md:text-md text-center my-2">
+            Tidak ada barang yang disuka
+          </p>
+        </div>
+      )}
     </div>
   );
 };
