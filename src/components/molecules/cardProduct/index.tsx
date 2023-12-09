@@ -72,7 +72,7 @@ const CardProduct = (props: { barang: any }) => {
       )}
 
       {isNewProduct() && !props.barang.promo && (
-        <div className="bg-blue-500 text-white text-xs px-2 py-1 rounded-br absolute top-0 left-0">
+        <div className="bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-700 dark:to-blue-900 text-white text-xs px-2 py-1 rounded-br absolute top-0 left-0">
           Baru
         </div>
       )}

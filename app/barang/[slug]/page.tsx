@@ -2,6 +2,7 @@
 import { FaWhatsapp } from "react-icons/fa6";
 import { Button, Typography } from "@/src/components/atoms";
 import { SearchBar } from "@/src/components/molecules";
+import { MdFavoriteBorder } from "react-icons/md";
 import {
   CatalogProducts,
   SectionLayout,
@@ -26,6 +27,7 @@ const DetailBarang = () => {
   const [barangSerupa, setBarangSerupa] = useState([] as any);
   const [barang, setBarang] = useState({} as any);
   const { domain } = useSelector((state: any) => state.webstore);
+  const [isLiked, setIsLiked] = useState(false);
 
   const whatsappNumber = "+6282225601468";
 
@@ -47,9 +49,45 @@ const DetailBarang = () => {
       setBarang(barang);
       setBarangSerupa(responseBarangSerupa.data);
       setBarangSejenis(responseBarangSejenis.data);
+
+      // Cek apakah barang sudah ada di wishlist ketika komponen dimuat
+      const existingFavorites = JSON.parse(
+        window.localStorage.getItem("favoriteProduct") || "[]"
+      );
+
+      const isProductInFavorites = existingFavorites.includes(slug);
+      setIsLiked(isProductInFavorites);
     };
     fetchData();
   }, [domain, slug]);
+
+  const handleLike = () => {
+    const existingFavorites = JSON.parse(
+      window.localStorage.getItem("favoriteProduct") || "[]"
+    );
+
+    const isProductInFavorites = existingFavorites.includes(slug);
+
+    if (isProductInFavorites) {
+      // Hapus barang dari wishlist jika sudah ada di dalamnya
+      const updatedFavorites = existingFavorites.filter(
+        (item: any) => item !== slug
+      );
+      window.localStorage.setItem(
+        "favoriteProduct",
+        JSON.stringify(updatedFavorites)
+      );
+      setIsLiked(false); // Ubah status ke "tidak disukai"
+    } else {
+      // Tambahkan barang ke wishlist jika belum ada di dalamnya
+      const updatedFavorites = [...existingFavorites, slug];
+      window.localStorage.setItem(
+        "favoriteProduct",
+        JSON.stringify(updatedFavorites)
+      );
+      setIsLiked(true); // Ubah status ke "disukai"
+    }
+  };
 
   // handle pesan
 
@@ -115,14 +153,24 @@ const DetailBarang = () => {
 
         {/* whatsapp */}
         <div className="sticky bottom-0 z-40">
-          <Button
-            onClick={handlePesan}
-            size="full"
-            color="green"
-            icon={<FaWhatsapp />}
-          >
-            Whatsapp
-          </Button>
+          <div className="flex">
+            <Button
+              onClick={handleLike}
+              color={isLiked ? "orange" : "red"} // Ubah warna berdasarkan status like
+              icon={<MdFavoriteBorder />}
+            >
+              {isLiked ? "Unlike" : "Like"}{" "}
+              {/* Ubah teks berdasarkan status like */}
+            </Button>
+            <Button
+              size="full"
+              onClick={handlePesan}
+              color="green"
+              icon={<FaWhatsapp />}
+            >
+              Whatsapp
+            </Button>
+          </div>
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 "use client";
 import { useSelector, useDispatch } from "react-redux";
+import { FcLike } from "react-icons/fc";
 import {
   setWebstore,
   setPercentaseMembership,
@@ -50,7 +51,11 @@ export default function AppBar(props: { allowBack?: boolean }) {
       >
         {webstore.nama_webstore}
       </p>
-      <ToggleDarkMode />
+
+      <div className="flex items-center space-x-2 md:space-x-4">
+        <FcLike onClick={() => router.push("/wishlist")} className="text-xl cursor-pointer" />
+        <ToggleDarkMode />
+      </div>
     </div>
   );
 }
