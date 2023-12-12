@@ -37,7 +37,7 @@ const Button = ({
   onClick,
 }: ButtonProps) => {
   const bgColor = {
-    indigo: "bg-indigo-600 hover:bg-indigo-800 text-white dark:text-black",
+    indigo: "bg-blue-600 hover:bg-blue-800 text-white dark:text-black",
     lime: "bg-lime-600 hover:bg-lime-800 text-white dark:text-black",
     red: "bg-red-600 hover:bg-red-800 text-white dark:text-black",
     orange: "bg-orange-600 hover:bg-orange-800 text-white dark:text-black",
@@ -45,7 +45,7 @@ const Button = ({
   };
 
   const borderColor = {
-    indigo: "border-indigo-600 text-black dark:text-white",
+    indigo: "border-blue-600 text-black dark:text-white",
     lime: "border-lime-600 text-black dark:text-white",
     red: "border-red-600 text-black dark:text-white",
     orange: "border-orange-600 text-black dark:text-white",

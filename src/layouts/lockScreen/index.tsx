@@ -1,5 +1,5 @@
 "use client";
-import { Textfield } from "@/src/components/atoms";
+import { Button, Textfield } from "@/src/components/atoms";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -9,6 +9,12 @@ const LockScreen = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
+    if (!password) {
+      alert("kata sandi harus diisi");
+      return;
+    }
+
     if (password === webstore.password) {
       window.sessionStorage.setItem("login", "OK");
       window.location.reload();
@@ -37,13 +43,19 @@ const LockScreen = () => {
         <p className="text-xs md:text-sm text-center text-white">
           halaman ini dikunci oleh pemilik situs
         </p>
-        <form className="my-2" onSubmit={handleSubmit}>
+        <form
+          className="my-2 flex items-center space-x-1"
+          onSubmit={handleSubmit}
+        >
           <Textfield
             fullWidth
             placeholder="kata sandi"
             name={"kunci"}
             onChange={setPassword}
           />
+          <Button disabled={!password} type="submit">
+            Masuk
+          </Button>
         </form>
         <p
           onClick={handlePesan}
