@@ -47,7 +47,7 @@ const LockScreen = () => {
         </form>
         <p
           onClick={handlePesan}
-          className="text-xs md:text-sm text-center text-white underline"
+          className="cursor-pointer text-xs md:text-sm text-center text-white underline"
         >
           minta kata sandi
         </p>
