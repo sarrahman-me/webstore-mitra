@@ -1,13 +1,15 @@
 "use client";
 import { SearchBar } from "@/src/components/molecules";
 import { CatalogProducts } from "@/src/components/oraganisms";
-import { AppBar } from "@/src/layouts";
+import { AppBar, LockScreen } from "@/src/layouts";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { RiWhatsappFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 export default function Motif() {
   const { webstore } = useSelector((state: any) => state.webstore);
+  const [login, setLogin] = useState(false);
   const searchParams = useSearchParams();
   const kategori = searchParams.get("kategori");
   const ukuran = searchParams.get("ukuran");
@@ -15,6 +17,12 @@ export default function Motif() {
   const queryAtribute = `kategori=${kategori || ""}&ukuran=${
     ukuran || ""
   }&motif=${motif || ""}`;
+
+  useEffect(() => {
+    if (sessionStorage.getItem("login") === "OK") {
+      setLogin(true);
+    }
+  }, []);
 
   const whatsappNumber = "+6282225601468";
 
@@ -26,6 +34,10 @@ export default function Motif() {
 
     window.open(whatsappLink, "_blank");
   };
+
+  if (webstore.use_password && !login) {
+    return <LockScreen />;
+  }
 
   return (
     <div>

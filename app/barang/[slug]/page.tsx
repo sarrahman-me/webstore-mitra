@@ -12,6 +12,7 @@ import {
   AppBar,
   DetailProductCard,
   KalkulatorKeramik,
+  LockScreen,
   SimulasiKeramik,
 } from "@/src/layouts";
 import DeskripsiProduk from "@/src/layouts/deskripsiProduct";
@@ -23,6 +24,8 @@ import { useSelector } from "react-redux";
 const DetailBarang = () => {
   const params = useParams();
   const slug = params.slug;
+  const { webstore } = useSelector((state: any) => state.webstore);
+  const [login, setLogin] = useState(false);
   const [barangSejenis, setBarangSejenis] = useState([] as any);
   const [barangSerupa, setBarangSerupa] = useState([] as any);
   const [barang, setBarang] = useState({} as any);
@@ -33,6 +36,9 @@ const DetailBarang = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if (sessionStorage.getItem("login") === "OK") {
+        setLogin(true);
+      }
       const responseBarang = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/products/barang/${slug}?track=true&source=${domain}`
       );
@@ -107,6 +113,10 @@ const DetailBarang = () => {
 
     window.open(whatsappLink, "_blank");
   };
+
+  if (webstore.use_password && !login) {
+    return <LockScreen />;
+  }
 
   if (!barang.nama_barang) {
     return (
