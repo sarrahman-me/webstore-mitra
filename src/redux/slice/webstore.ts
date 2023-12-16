@@ -5,6 +5,7 @@ const webstoreSlice = createSlice({
   initialState: {
     webstore: [],
     domain: "",
+    mitra: {},
     percentaseMembership: 0,
   },
   reducers: {
@@ -14,12 +15,16 @@ const webstoreSlice = createSlice({
     setWebstore: (state, action) => {
       state.webstore = action.payload;
     },
+    setMitra: (state, action) => {
+      state.mitra = action.payload;
+    },
     setPercentaseMembership: (state, action) => {
       state.percentaseMembership = action.payload;
     },
   },
 });
 
-export const { setWebstore, setPercentaseMembership, setDomain } = webstoreSlice.actions;
+export const { setWebstore, setPercentaseMembership, setDomain, setMitra } =
+  webstoreSlice.actions;
 
 export default webstoreSlice.reducer;

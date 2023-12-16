@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const LockScreen = () => {
   const [password, setPassword] = useState("");
-  const { webstore } = useSelector((state: any) => state.webstore);
+  const { webstore, mitra } = useSelector((state: any) => state.webstore);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -23,13 +23,11 @@ const LockScreen = () => {
     }
   };
 
-  const whatsappNumber = "+6282225601468";
-
   const handlePesan = () => {
     const message = `Halo Admin, minta kata sandi toko online`;
-    const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
-      message
-    )}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${
+      mitra?.whatsapp
+    }&text=${encodeURIComponent(message)}`;
 
     window.open(whatsappLink, "_blank");
   };

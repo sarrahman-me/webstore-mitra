@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import empty from "@/public/empty.png";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const Wishlist = () => {
   const [productsWishlist, setProductsWishlist] = useState([] as any);
   const [mostCommonSize, setMostCommonSize] = useState("");
   const [mostCommonMotif, setMostCommonMotif] = useState("");
-
-  const whatsappNumber = "+6282225601468";
+  const { mitra } = useSelector((state: any) => state.webstore);
 
   // handle pesan untuk semua barang di wishlist
   const handlePesan = () => {
@@ -32,9 +32,9 @@ const Wishlist = () => {
       message += "\n------------------------\n";
     });
 
-    const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
-      message
-    )}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${
+      mitra?.whatsapp
+    }&text=${encodeURIComponent(message)}`;
 
     window.open(whatsappLink, "_blank");
   };

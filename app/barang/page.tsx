@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const [barangPromo, setbarangPromo] = useState([] as any);
-  const { webstore } = useSelector((state: any) => state.webstore);
+  const { webstore, mitra } = useSelector((state: any) => state.webstore);
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
@@ -25,11 +25,9 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const whatsappNumber = "+6282225601468";
-
   const handlePesan = () => {
     const message = `Halo Admin`;
-    const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${mitra?.whatsapp}&text=${encodeURIComponent(
       message
     )}`;
 

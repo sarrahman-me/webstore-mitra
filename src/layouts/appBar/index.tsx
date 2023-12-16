@@ -5,6 +5,7 @@ import {
   setWebstore,
   setPercentaseMembership,
   setDomain,
+  setMitra,
 } from "@/src/redux/slice/webstore";
 import { GetDataApi } from "@/src/utils";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -25,8 +26,12 @@ export default function AppBar(props: { allowBack?: boolean }) {
       const responseMembership = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/membership/member/${response?.data?.id_membership}`
       );
+      const responseMitra = await GetDataApi(
+        `${process.env.NEXT_PUBLIC_HOST}/mitra/by?username=${response?.data?.mitra}`
+      );
       dispatch(setDomain(response?.data?.domain));
       dispatch(setWebstore(response.data));
+      dispatch(setMitra(responseMitra?.data));
       dispatch(
         setPercentaseMembership(responseMembership.data.harga.persentase)
       );
@@ -53,7 +58,10 @@ export default function AppBar(props: { allowBack?: boolean }) {
       </p>
 
       <div className="flex items-center space-x-2 md:space-x-4">
-        <FcLike onClick={() => router.push("/wishlist")} className="text-xl cursor-pointer" />
+        <FcLike
+          onClick={() => router.push("/wishlist")}
+          className="text-xl cursor-pointer"
+        />
         <ToggleDarkMode />
       </div>
     </div>

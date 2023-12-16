@@ -8,7 +8,7 @@ import { RiWhatsappFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 export default function Motif() {
-  const { webstore } = useSelector((state: any) => state.webstore);
+  const { webstore, mitra } = useSelector((state: any) => state.webstore);
   const [login, setLogin] = useState(false);
   const searchParams = useSearchParams();
   const kategori = searchParams.get("kategori");
@@ -24,13 +24,11 @@ export default function Motif() {
     }
   }, []);
 
-  const whatsappNumber = "+6282225601468";
-
   const handlePesan = () => {
     const message = `Halo Admin`;
-    const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
-      message
-    )}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${
+      mitra?.whatsapp
+    }&text=${encodeURIComponent(message)}`;
 
     window.open(whatsappLink, "_blank");
   };

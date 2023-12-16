@@ -29,10 +29,8 @@ const DetailBarang = () => {
   const [barangSejenis, setBarangSejenis] = useState([] as any);
   const [barangSerupa, setBarangSerupa] = useState([] as any);
   const [barang, setBarang] = useState({} as any);
-  const { domain } = useSelector((state: any) => state.webstore);
+  const { domain, mitra } = useSelector((state: any) => state.webstore);
   const [isLiked, setIsLiked] = useState(false);
-
-  const whatsappNumber = "+6282225601468";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -107,9 +105,9 @@ const DetailBarang = () => {
 
     --------Link Produk---------
     ${window.location.href}`;
-    const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
-      message
-    )}`;
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${
+      mitra?.whatsapp
+    }&text=${encodeURIComponent(message)}`;
 
     window.open(whatsappLink, "_blank");
   };
