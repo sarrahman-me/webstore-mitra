@@ -57,7 +57,7 @@ export default function Motif() {
         Pilihan {kategori} {ukuran} {motif}
       </p>
       <CatalogProducts atribut={queryAtribute} />
-      <div className="fixed right-0 bottom-0 m-2">
+      <div className="fixed left-0 bottom-0 m-2">
         <div
           onClick={handlePesan}
           className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white space-x-2 flex items-center rounded-full md:p-2 md:px-4 p-2"

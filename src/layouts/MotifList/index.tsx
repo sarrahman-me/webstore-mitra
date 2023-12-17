@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
-import WoodMotif from "@/public/wood.png";
-import StoneMotif from "@/public/stone.png";
-import RusticMotif from "@/public/rustic.png";
-import MarbleMotif from "@/public/marble.png";
+import WoodMotif from "@/public/wood.jpg";
+import StoneMotif from "@/public/stone.jpg";
+import RusticMotif from "@/public/rustic.jpeg";
+import MarbleMotif from "@/public/marble.jpg";
 import FancyMotif from "@/public/fancy.png";
-import BasicMotif from "@/public/basic.png";
+import BasicMotif from "@/public/basic.jpg";
 import { useRouter } from "next/navigation";
 
 const motifList = [
@@ -48,9 +48,18 @@ export default function MotifList() {
           <div
             onClick={() => router.push(`/barang/filter?motif=${motif.title}`)}
             key={motif.title}
-            className="p-2 cursor-pointer"
+            className="p-2 cursor-pointer relative"
           >
-            <Image className="rounded-md" src={motif.image} alt={motif.title} />
+            <Image
+              className="rounded-md h-28 md:h-36"
+              src={motif.image}
+              alt={motif.title}
+            />
+            <div className="absolute bottom-2 px-4 py-3 bg-gray-500/50 rounded-tr-md">
+              <h1 className="text-white font-semibold md:text-2xl text-center">
+                {motif.title}
+              </h1>
+            </div>
           </div>
         ))}
       </div>

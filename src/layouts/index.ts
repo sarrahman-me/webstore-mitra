@@ -1,6 +1,7 @@
 import AppBar from "./appBar";
 import DetailProductCard from "./DetailProductCard";
 import KalkulatorKeramik from "./kalkulatorBarang";
+import ListUkuran from "./listUkuran";
 import LockScreen from "./lockScreen";
 import MotifList from "./MotifList";
 import PilihanPencarian from "./pilihanPencarian";
@@ -14,4 +15,5 @@ export {
   MotifList,
   PilihanPencarian,
   LockScreen,
+  ListUkuran,
 };
