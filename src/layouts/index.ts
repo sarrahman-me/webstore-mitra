@@ -6,6 +6,7 @@ import LockScreen from "./lockScreen";
 import MotifList from "./MotifList";
 import PilihanPencarian from "./pilihanPencarian";
 import SimulasiKeramik from "./simulasiKeramik";
+import Slider from "./Slider";
 
 export {
   DetailProductCard,
@@ -16,4 +17,5 @@ export {
   PilihanPencarian,
   LockScreen,
   ListUkuran,
+  Slider,
 };
