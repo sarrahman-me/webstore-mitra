@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import slide1 from "@/public/slide1.jpg";
-import "swiper/css";
 import Image from "next/image";
+import "swiper/css";
 
 export default function Slider() {
   return (
