@@ -22,11 +22,16 @@ const Logo = ({ size }: LogoProps) => {
   `;
 
   return (
-    <span className={className}>
+    <a
+      href="https://tokokeramik.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+    >
       <p>tokokera</p>
       <FaMountainSun className="text-indigo-600" />
       <p>ik.com</p>
-    </span>
+    </a>
   );
 };
 

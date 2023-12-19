@@ -14,9 +14,10 @@ export default function Motif() {
   const kategori = searchParams.get("kategori");
   const ukuran = searchParams.get("ukuran");
   const motif = searchParams.get("motif");
+  const area = searchParams.get("area");
   const queryAtribute = `kategori=${kategori || ""}&ukuran=${
     ukuran || ""
-  }&motif=${motif || ""}`;
+  }&motif=${motif || ""}&area=${area || ""}`;
 
   useEffect(() => {
     if (sessionStorage.getItem("login") === "OK") {

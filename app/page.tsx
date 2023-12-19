@@ -5,6 +5,7 @@ import WhatsappIcon from "@/src/components/molecules/whatsappIcon";
 import { CatalogProducts, SwiperProduct } from "@/src/components/oraganisms";
 import {
   AppBar,
+  AreaListComp,
   ListUkuran,
   LockScreen,
   MotifList,
@@ -56,6 +57,7 @@ const Home = () => {
         <PilihanPencarian />
         <MotifList />
         <ListUkuran />
+        <AreaListComp />
         <p className="underline font-semibold m-2">Semua Barang</p>
         <CatalogProducts />
         <WhatsappIcon />

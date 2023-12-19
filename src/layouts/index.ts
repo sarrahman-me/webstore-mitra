@@ -1,4 +1,5 @@
 import AppBar from "./appBar";
+import AreaListComp from "./AreaList";
 import DetailProductCard from "./DetailProductCard";
 import KalkulatorKeramik from "./kalkulatorBarang";
 import ListUkuran from "./listUkuran";
@@ -18,4 +19,5 @@ export {
   LockScreen,
   ListUkuran,
   Slider,
+  AreaListComp,
 };
