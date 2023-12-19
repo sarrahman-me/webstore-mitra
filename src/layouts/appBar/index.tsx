@@ -52,14 +52,8 @@ export default function AppBar(props: { allowBack?: boolean }) {
         </p>
       )}
       {webstore.logo ? (
-        <div className="flex items-center">
-          <img
-            onClick={() => router.push("/")}
-            src={webstore.logo}
-            alt="logo"
-            width={50}
-            height={50}
-          />
+        <div onClick={() => router.push("/")} className="flex items-center">
+          <img src={webstore.logo} alt="logo" width={50} height={50} />
           <p className="font-bold text-sm md:text-base">
             {webstore.nama_webstore}
           </p>

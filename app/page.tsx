@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const [barangPromo, setbarangPromo] = useState([] as any);
-  const { webstore, mitra } = useSelector((state: any) => state.webstore);
+  const { webstore } = useSelector((state: any) => state.webstore);
   const [login, setLogin] = useState(false);
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { SearchBar } from "@/src/components/molecules";
 import WhatsappIcon from "@/src/components/molecules/whatsappIcon";
@@ -40,6 +41,11 @@ const Home = () => {
       <div>
         <AppBar />
         <SearchBar />
+        {webstore.banner_image && (
+          <div className="flex justify-center m-2 sm:my-2">
+            <img src={webstore.banner_image} alt="banner" />
+          </div>
+        )}
         {webstore.show_price && (
           <SwiperProduct
             url="/barang/promo"
