@@ -42,7 +42,7 @@ export default function AppBar(props: { allowBack?: boolean }) {
   }, [dispatch]);
 
   return (
-    <div className="sticky top-0 z-50 bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-700 dark:to-blue-900 text-white flex justify-between items-center p-0.5">
+    <div className="sticky top-0 z-50 bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-700 dark:to-blue-900 text-white flex justify-between items-center">
       {props.allowBack && (
         <p
           onClick={() => router.back()}
@@ -56,7 +56,7 @@ export default function AppBar(props: { allowBack?: boolean }) {
       ) : (
         <p
           onClick={() => router.push("/")}
-          className="cursor-pointer font-semibold select-none"
+          className="cursor-pointer font-semibold select-none p-2"
         >
           {webstore.nama_webstore}
         </p>
