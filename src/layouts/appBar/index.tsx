@@ -42,7 +42,7 @@ export default function AppBar(props: { allowBack?: boolean }) {
   }, [dispatch]);
 
   return (
-    <div className="sticky top-0 z-50 bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-700 dark:to-blue-900 text-white flex justify-between items-center p-2">
+    <div className="sticky top-0 z-50 bg-gradient-to-br from-blue-300 to-blue-500 dark:from-blue-700 dark:to-blue-900 text-white flex justify-between items-center p-0.5">
       {props.allowBack && (
         <p
           onClick={() => router.back()}
@@ -52,7 +52,7 @@ export default function AppBar(props: { allowBack?: boolean }) {
         </p>
       )}
       {webstore.logo ? (
-        <img src={webstore.logo} alt="logo" width={50} height={50} />
+        <img src={webstore.logo} alt="logo" width={70} height={60} />
       ) : (
         <p
           onClick={() => router.push("/")}

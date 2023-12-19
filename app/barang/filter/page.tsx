@@ -1,14 +1,14 @@
 "use client";
 import { SearchBar } from "@/src/components/molecules";
+import WhatsappIcon from "@/src/components/molecules/whatsappIcon";
 import { CatalogProducts } from "@/src/components/oraganisms";
 import { AppBar, LockScreen } from "@/src/layouts";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { RiWhatsappFill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 
 export default function Motif() {
-  const { webstore, mitra } = useSelector((state: any) => state.webstore);
+  const { webstore } = useSelector((state: any) => state.webstore);
   const [login, setLogin] = useState(false);
   const searchParams = useSearchParams();
   const kategori = searchParams.get("kategori");
@@ -23,15 +23,6 @@ export default function Motif() {
       setLogin(true);
     }
   }, []);
-
-  const handlePesan = () => {
-    const message = `Halo Admin`;
-    const whatsappLink = `https://api.whatsapp.com/send?phone=${
-      mitra?.whatsapp
-    }&text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappLink, "_blank");
-  };
 
   if (webstore.use_password && !login) {
     return <LockScreen />;
@@ -57,15 +48,7 @@ export default function Motif() {
         Pilihan {kategori} {ukuran} {motif}
       </p>
       <CatalogProducts atribut={queryAtribute} />
-      <div className="fixed right-0 bottom-0 m-2">
-        <div
-          onClick={handlePesan}
-          className="bg-gradient-to-br from-green-300 to-green-500 dark:from-green-700 dark:to-green-900 text-white space-x-2 flex items-center rounded-full md:p-2 md:px-4 p-2"
-        >
-          <RiWhatsappFill className="text-white text-3xl" />
-          <p className="text-sm hidden md:block">Chat</p>
-        </div>
-      </div>
+      <WhatsappIcon />
     </div>
   );
 }
