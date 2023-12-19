@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { Button, Textfield } from "@/src/components/atoms";
 import { useState } from "react";
@@ -35,6 +36,11 @@ const LockScreen = () => {
   return (
     <div className="bg-gradient-to-tl from-blue-300 to-blue-500 dark:from-blue-700 dark:to-blue-900 min-h-screen flex justify-center items-center">
       <div className="space-y-3 max-w-screen-md w-full">
+        {webstore?.logo ? (
+          <div className="flex justify-center">
+            <img src={webstore?.logo} alt="logo" width={250} height={250} />
+          </div>
+        ) : null}
         <p className="font-bold text-xl sm:text-2xl text-center text-white">
           Selamat datang di {webstore.nama_webstore}
         </p>

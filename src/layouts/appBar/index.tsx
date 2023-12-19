@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useSelector, useDispatch } from "react-redux";
 import { FcLike } from "react-icons/fc";
@@ -50,13 +51,16 @@ export default function AppBar(props: { allowBack?: boolean }) {
           <AiOutlineArrowLeft />
         </p>
       )}
-      <p
-        onClick={() => router.push("/")}
-        className="cursor-pointer font-semibold select-none"
-      >
-        {webstore.nama_webstore}
-      </p>
-
+      {webstore.logo ? (
+        <img src={webstore.logo} alt="logo" width={50} height={50} />
+      ) : (
+        <p
+          onClick={() => router.push("/")}
+          className="cursor-pointer font-semibold select-none"
+        >
+          {webstore.nama_webstore}
+        </p>
+      )}
       <div className="flex items-center space-x-2 md:space-x-4">
         <FcLike
           onClick={() => router.push("/wishlist")}
