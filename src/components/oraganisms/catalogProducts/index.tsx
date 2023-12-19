@@ -15,10 +15,12 @@ export default function CatalogProducts(props: {
   path?: string;
   unPagination?: boolean;
   limit?: string;
+  filter?: boolean;
 }) {
   const router = useRouter();
   const params = useSearchParams();
   let page = params.get("page");
+  let penggunaanParams = params.get("penggunaan");
   if (props.unPagination) {
     page = "1";
   }
@@ -26,6 +28,9 @@ export default function CatalogProducts(props: {
   const [currentPage, setCurrentPage] = useState(page ? Number(page) : 1);
   const [metadata, setMetadata] = useState({} as any);
   const [loading, setLoading] = useState(true);
+  const [penggunaan, setPenggunaan] = useState(
+    penggunaanParams ? penggunaanParams : "Lantai"
+  );
 
   const path = props.path || "products/barang";
 
@@ -34,14 +39,14 @@ export default function CatalogProducts(props: {
       const response = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/${path}?${props.atribut || ""}&limit=${
           props.limit || "48"
-        }&page=${currentPage}&minstok=25`
+        }&page=${currentPage}&minstok=25&penggunaan=${penggunaan}`
       );
       setBarang(response.data);
       setMetadata(response.metadata);
       setLoading(false);
     }
     fetchData();
-  }, [currentPage, props.atribut, path, props.limit]);
+  }, [currentPage, props.atribut, path, props.limit, penggunaan]);
 
   const handleNextPage = () => {
     if (currentPage < metadata?.totalPages) {
@@ -63,9 +68,44 @@ export default function CatalogProducts(props: {
     }
   };
 
+  const handleFilterPenggunaan = (e: any) => {
+    const selectedValue = e.target.value;
+
+    // Mengatur state penggunaan dengan nilai yang dipilih
+    setPenggunaan(selectedValue);
+
+    // Mendapatkan parameter dari URL
+    const queryParams = new URLSearchParams(params.toString());
+
+    // Mengatur nilai parameter penggunaan dengan nilai yang dipilih
+    queryParams.set("penggunaan", selectedValue);
+
+    // Mengatur nilai parameter page menjadi 1
+    queryParams.set("page", "1");
+
+    // Memperbarui URL dengan parameter yang telah diubah
+    router.push(`?${queryParams.toString()}`);
+
+    // Mengatur currentPage menjadi 1
+    setCurrentPage(1);
+  };
+
   return (
     <div>
       <div className="p-2">
+        {props.filter && (
+          <div className="my-2">
+            <select
+              value={penggunaan}
+              name="penggunaan"
+              onChange={handleFilterPenggunaan}
+              className="appearance-none bg-white border border-gray-300 rounded px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-blue-500"
+            >
+              <option value="Lantai">Lantai</option>
+              <option value="Dinding">Dinding</option>
+            </select>
+          </div>
+        )}
         <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-y-4 gap-x-2">
           {loading ? (
             <div className="text-center">Loading...</div>

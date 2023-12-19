@@ -36,7 +36,7 @@ export default function Motif() {
       {webstore.show_price && (
         <div>
           <p className="underline font-semibold m-2">
-            Promo {kategori} {ukuran} {motif}
+            Promo {kategori} {ukuran} {motif} {area}
           </p>
           <CatalogProducts
             limit="100"
@@ -46,9 +46,9 @@ export default function Motif() {
         </div>
       )}
       <p className="underline font-semibold m-2">
-        Pilihan {kategori} {ukuran} {motif}
+        Pilihan {kategori} {ukuran} {motif} {area}
       </p>
-      <CatalogProducts atribut={queryAtribute} />
+      <CatalogProducts filter={true} atribut={queryAtribute} />
       <WhatsappIcon />
     </div>
   );
