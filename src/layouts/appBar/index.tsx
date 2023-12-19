@@ -52,7 +52,13 @@ export default function AppBar(props: { allowBack?: boolean }) {
         </p>
       )}
       {webstore.logo ? (
-        <img src={webstore.logo} alt="logo" width={70} height={60} />
+        <img
+          onClick={() => router.push("/")}
+          src={webstore.logo}
+          alt="logo"
+          width={70}
+          height={60}
+        />
       ) : (
         <p
           onClick={() => router.push("/")}
