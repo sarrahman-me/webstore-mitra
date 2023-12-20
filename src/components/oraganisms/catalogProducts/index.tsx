@@ -29,7 +29,7 @@ export default function CatalogProducts(props: {
   const [metadata, setMetadata] = useState({} as any);
   const [loading, setLoading] = useState(true);
   const [penggunaan, setPenggunaan] = useState(
-    penggunaanParams ? penggunaanParams : "Lantai"
+    penggunaanParams ? penggunaanParams : ""
   );
 
   const path = props.path || "products/barang";
@@ -101,6 +101,7 @@ export default function CatalogProducts(props: {
               onChange={handleFilterPenggunaan}
               className="appearance-none bg-white border border-gray-300 rounded px-4 py-2 pr-8 leading-tight focus:outline-none focus:border-blue-500"
             >
+              <option value="">Semua</option>
               <option value="Lantai">Lantai</option>
               <option value="Dinding">Dinding</option>
             </select>

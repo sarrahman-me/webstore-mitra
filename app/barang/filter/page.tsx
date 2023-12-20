@@ -48,7 +48,7 @@ export default function Motif() {
       <p className="underline font-semibold m-2">
         Pilihan {kategori} {ukuran} {motif} {area}
       </p>
-      <CatalogProducts filter={true} atribut={queryAtribute} />
+      <CatalogProducts filter={!ukuran && true} atribut={queryAtribute} />
       <WhatsappIcon />
     </div>
   );
