@@ -9,6 +9,7 @@ import {
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
 import { Typography } from "../../atoms";
+import { useSelector } from "react-redux";
 
 export default function CatalogProducts(props: {
   atribut?: string;
@@ -28,6 +29,7 @@ export default function CatalogProducts(props: {
   const [currentPage, setCurrentPage] = useState(page ? Number(page) : 1);
   const [metadata, setMetadata] = useState({} as any);
   const [loading, setLoading] = useState(true);
+  const { domain } = useSelector((state: any) => state.webstore);
   const [penggunaan, setPenggunaan] = useState(
     penggunaanParams ? penggunaanParams : ""
   );
@@ -39,14 +41,14 @@ export default function CatalogProducts(props: {
       const response = await GetDataApi(
         `${process.env.NEXT_PUBLIC_HOST}/${path}?${props.atribut || ""}&limit=${
           props.limit || "48"
-        }&page=${currentPage}&minstok=25&penggunaan=${penggunaan}`
+        }&page=${currentPage}&minstok=25&penggunaan=${penggunaan}&source=${domain}`
       );
       setBarang(response.data);
       setMetadata(response.metadata);
       setLoading(false);
     }
     fetchData();
-  }, [currentPage, props.atribut, path, props.limit, penggunaan]);
+  }, [currentPage, props.atribut, path, props.limit, penggunaan, domain]);
 
   const handleNextPage = () => {
     if (currentPage < metadata?.totalPages) {
