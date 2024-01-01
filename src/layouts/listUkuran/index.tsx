@@ -54,6 +54,21 @@ const motifList = [
       "from-orange-300 to-orange-500 dark:from-orange-700 dark:to-orange-900",
     slug: "30x60",
   },
+  {
+    title: "60 x 120",
+    color: `from-violet-300 to-violet-500 dark:from-violet-700 dark:to-violet-900`,
+    slug: "60x120",
+  },
+  {
+    title: "20 x 20",
+    color: `from-gray-300 to-gray-500 dark:from-gray-700 dark:to-gray-900`,
+    slug: "20x20",
+  },
+  {
+    title: "20 x 25",
+    color: "from-stone-300 to-stone-500 dark:from-stone-700 dark:to-stone-900",
+    slug: "20x25",
+  },
 ];
 
 export default function ListUkuran() {
