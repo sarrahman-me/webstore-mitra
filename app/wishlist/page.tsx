@@ -116,9 +116,7 @@ const Wishlist = () => {
               Whatsapp
             </Button>
           </div>
-          <p className="underline font-semibold m-2">
-            Mirip dengan yang kamu suka
-          </p>
+          <p className="underline font-semibold m-2">Mungkin kamu suka</p>
           <CatalogProducts
             limit="15"
             unPagination={true}

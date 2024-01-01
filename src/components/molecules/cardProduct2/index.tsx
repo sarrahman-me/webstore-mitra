@@ -75,7 +75,10 @@ const CardProduct2 = (props: { barang: any }) => {
         </p>
 
         {/* nama barang */}
-        <p className="text-xs md:text-sm">{props.barang?.nama_barang}</p>
+        <p className="text-xs md:text-sm">
+          {props.barang?.nama_barang}{" "}
+          {props.barang?.warna?.replace(/\([^)]*\)/g, "").trim()}
+        </p>
 
         {/* harga barang */}
         {webstore.show_price && (
@@ -109,9 +112,8 @@ const CardProduct2 = (props: { barang: any }) => {
 
         {/* kualitas barang dan ukuran */}
 
-        <div className="text-xs">
+        <div className="text-xs space-y-1">
           <p>{props.barang?.kualitas}</p>
-
           <p>{props.barang?.ukuran}</p>
         </div>
 
