@@ -8,7 +8,7 @@ import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
-import { Typography } from "../../atoms";
+import { LottiePlayer, Typography } from "../../atoms";
 import { useSelector } from "react-redux";
 
 export default function CatalogProducts(props: {
@@ -111,7 +111,16 @@ export default function CatalogProducts(props: {
         )}
         <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-y-4 gap-x-2">
           {loading ? (
-            <div className="text-center">Loading...</div>
+            <div className="flex justify-center items-center" role="status">
+              <LottiePlayer
+                url={
+                  "https://lottie.host/e94b19a3-dd9a-4ed1-be88-5f2042b21cc7/QxrdGHKsmZ.json"
+                }
+                height={"300px"}
+                width={"300px"}
+              />
+              <Typography otherClass="sr-only">Loading</Typography>
+            </div>
           ) : barang.length > 0 ? (
             barang.map((item: any, i: any) => (
               <div key={i}>
