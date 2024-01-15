@@ -54,8 +54,8 @@ export default function DetailProductCard(props: { barang: any }) {
             {props.barang.kategori}
           </p>
           <p className="text-sm md:text-base font-semibold">
-            {(props.barang?.nama_barang as string).toUpperCase()} -{" "}
-            {props.barang.warna}
+            {props.barang.nama_barang}{" "}
+            {props.barang.warna?.replace(/\([^)]*\)/g, "").trim()}
           </p>
           <p className="text-sm md:text-base">{props.barang.brand}</p>
           {webstore.show_stock && (
