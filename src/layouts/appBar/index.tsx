@@ -7,6 +7,7 @@ import {
   setPercentaseMembership,
   setDomain,
   setMitra,
+  setMembership,
 } from "@/src/redux/slice/webstore";
 import { GetDataApi } from "@/src/utils";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -33,6 +34,7 @@ export default function AppBar(props: { allowBack?: boolean }) {
       dispatch(setDomain(response?.data?.domain));
       dispatch(setWebstore(response.data));
       dispatch(setMitra(responseMitra?.data));
+      dispatch(setMembership(responseMembership?.data?.membership));
       dispatch(
         setPercentaseMembership(responseMembership.data.harga.persentase)
       );
