@@ -55,9 +55,9 @@ const Home = () => {
           <div className="flex justify-center">
             <FcExpired className="text-9xl" />
           </div>
-          <p className="text-xs">
+          <p className="text-xs text-orange-500 text-center">
             Pemberitahuan ini ditujukan kepada pemilik situs untuk melakukan
-            pembaruan
+            pembaruan di halaman admin
           </p>
         </Container>
       </div>
