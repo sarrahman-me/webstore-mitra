@@ -50,11 +50,15 @@ const Home = () => {
       <div className="flex flex-col justify-center items-center min-h-screen">
         <Container otherClass="p-8">
           <Typography align="center" variant="h4">
-            Situs Terkunci
+            Situs Expired
           </Typography>
           <div className="flex justify-center">
             <FcExpired className="text-9xl" />
           </div>
+          <p className="text-xs">
+            Pemberitahuan ini ditujukan kepada pemilik situs untuk melakukan
+            pembaruan
+          </p>
         </Container>
       </div>
     );
