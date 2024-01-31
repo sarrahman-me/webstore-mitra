@@ -51,6 +51,9 @@ const CardProduct = (props: { barang: any }) => {
 
   return (
     <div
+      onClick={() => {
+        router.push(`/barang/${props.barang.slug}`);
+      }}
       className={`bg-white dark:bg-slate-800 rounded shadow cursor-pointer relative hover:shadow-md`}
     >
       {props.barang.promo && webstore.show_price && props.barang.stok > 500 && (
@@ -103,11 +106,10 @@ const CardProduct = (props: { barang: any }) => {
       )}
 
       <div className="p-1 divide-y-2 md:divide-y-4 divide-transparent">
-        <p className="text-xs text-blue-500">{props.barang?.slug}</p>
-        <p className="text-xs md:text-sm">
-          {props.barang.nama_barang}{" "}
-          {props.barang.warna?.replace(/\([^)]*\)/g, "").trim()}
+        <p className="text-xs text-blue-500">
+          {props.barang?.kategori} {props.barang.tekstur}
         </p>
+        <p className="text-xs md:text-sm">{props.barang?.nama_barang}</p>
         {webstore.show_price && (
           <div>
             {props.barang.promo ? (
